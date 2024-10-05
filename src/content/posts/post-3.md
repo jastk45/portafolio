@@ -1,22 +1,14 @@
 ---
-title: 'Physics Informed Neural Networks and Gaussian Processes-Hamiltonian Monte Carlo  to solve Ordinary Differential Equations.'
-author: Tristen Tomczak
-date: '09-09-2024'
+title: 'Physics Informed Neural Networks and Gaussian Processes-Hamiltonian Monte Carlo  to solve Ordinary Differential Equations'
+author: Jaime Astudillo
+date: '13-10-2024'
 image:
-    url: '/blog-post.webp'
+    url: '/tabla.png'
     alt: 'Post Thumbnail'
 ---
 
-Aenean a ex et metus finibus malesuada commodo in magna. In ut libero urna. Aenean in quam in ipsum rutrum egestas. Donec semper dignissim ante. Sed efficitur mi et sapien ultrices malesuada. Aliquam fermentum aliquam ante, eu semper mi vestibulum quis. Sed et purus metus. Pellentesque vestibulum commodo euismod. Duis a mauris accumsan lorem laoreet tempor. Mauris accumsan varius metus, in rutrum magna accumsan eget. Pellentesque at leo at sem tempor hendrerit non sit amet ante. Cras commodo augue sed magna rutrum rutrum.
+Non-linear systems of differential equations are vital in fields like biology, finance, ecology, and engineering for modeling dynamic systems. This paper explores two advanced function approximation techniques Physics Informed Neural Networks (PINNs) and Gaussian Processes (GPs) combined with Hamiltonian Monte Carlo (HMC) for solving Ordinary Differential Equations (ODEs) that represent complex physical phenomena. The proposed approach integrates PINNs and GP-HMC, demonstrated through two synthetic models (Lotka Volterra and Fitzhugh Nagumo) and a real dataset (COVID-19 SIR model). The results show that the methodology effectively estimates parameters with low Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE). For example, in the Lotka-Volterra model, GP-HMC achieved an RMSE of 0.044 and MAE of 0.041 for one state variable, while PINNs yielded an RMSE of 0.106 and MAE of 0.081. These results highlight the robustness of the methodology in accurately reconstructing system states across varying levels of variability.
 
 <div class="center">
-  <img class="pro-img" width="500px" height="281" src="/image-1.webp" alt="First Image" />
+  <img class="pro-img" width="500px" height="281" src="/Physics.png" alt="Second Image" />
 </div>
-
-Vivamus sed faucibus lorem. Aenean a lorem convallis, ultrices nisl vitae, imperdiet elit. Duis in tristique lacus. Quisque sollicitudin dolor ac dui faucibus, ut tincidunt velit blandit. Donec tincidunt metus eros, at dignissim enim blandit ut. Cras varius tincidunt tortor ac tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed a ipsum quis nulla commodo pretium. Ut sed sem bibendum, facilisis dolor sit amet, interdum nibh. Aliquam id auctor dolor. In nulla diam, mattis quis nisl et, aliquam interdum quam. Donec lobortis ex arcu, ac pharetra ante vehicula euismod. Donec finibus faucibus felis vitae facilisis.
-
-<div class="center">
-  <img class="pro-img" width="500px" height="281" src="/image-2.webp" alt="Second Image" />
-</div>
-
-Vivamus sed faucibus lorem. Aenean a lorem convallis, ultrices nisl vitae, imperdiet elit. Duis in tristique lacus. Quisque sollicitudin dolor ac dui faucibus, ut tincidunt velit blandit. Donec tincidunt metus eros, at dignissim enim blandit ut. Cras varius tincidunt tortor ac tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed a ipsum quis nulla commodo pretium. Ut sed sem bibendum, facilisis dolor sit amet, interdum nibh. Aliquam id auctor dolor. In nulla diam, mattis quis nisl et, aliquam interdum quam. Donec lobortis ex arcu, ac pharetra ante vehicula euismod. Donec finibus faucibus felis vitae facilisis.
