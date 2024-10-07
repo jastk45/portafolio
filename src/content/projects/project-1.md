@@ -1,19 +1,21 @@
 ---
-title: 'Project 1'
-description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci'
+title: 'Análisis de Datos para Agros EC'
+description: 'Liderazgo en proyectos de análisis de datos para la optimización de ventas, utilizando Power BI y Python.'
 image:
     url: '/GitHub.webp'
     alt: 'GitHub wallpaper'
 worksImage1:
     url: '/image-1.webp'
-    alt: 'first image of your project.'
+    alt: 'Visualización de métricas en Power BI'
 worksImage2:
     url: '/image-2.webp'
-    alt: 'second image of your project.'
+    alt: 'Modelo predictivo de ventas'
 platform: Web
-stack: Astro, JavaScript
+stack: Python, Power BI, DAX, SQL, Pandas, Scikit-learn, matplotlib
 website: https://astro-milky-way.netlify.app/
-github: https://github.com/ttomczak3/Milky-Way
+github: https://github.com/Jastk45/Milky-Way
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus a tortor at molestie. Sed pellentesque leo auctor, auctor lorem nec, venenatis risus. Vivamus commodo ipsum vitae orci finibus, vel porta nunc viverra. In hac habitasse platea dictumst. Nunc pretium, ligula ultricies consequat sollicitudin, enim ex ullamcorper nisl.
+En Agros EC, lideré proyectos de análisis de datos para visualizar métricas clave de ventas, construir y evaluar modelos predictivos como regresión y bosque aleatorio, y desarrollar insights estratégicos. Utilicé **Power BI**, **Python**, y **DAX** para optimizar la predicción de ventas y el rendimiento comercial.
+
+---

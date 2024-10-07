@@ -1,19 +1,21 @@
 ---
-title: 'Project 4'
-description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci'
+title: 'Desarrollo de Aplicación de Aprendizaje en Kichwa'
+description: 'Desarrollo frontend y documentación técnica de una aplicación de aprendizaje en Kichwa.'
 image:
     url: '/GitHub.webp'
     alt: 'GitHub wallpaper'
 worksImage1:
     url: '/image-1.webp'
-    alt: 'first image of your project.'
+    alt: 'Interfaz de la aplicación en React Native'
 worksImage2:
     url: '/image-2.webp'
-    alt: 'second image of your project.'
-platform: Web
-stack: Astro, JavaScript
+    alt: 'Documentación técnica del proyecto'
+platform: Mobile
+stack: React Native, FastAPI, Scrum
 website: https://astro-milky-way.netlify.app/
-github: https://github.com/ttomczak3/Milky-Way
+github: https://github.com/Jastk45/Milky-Way
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus a tortor at molestie. Sed pellentesque leo auctor, auctor lorem nec, venenatis risus. Vivamus commodo ipsum vitae orci finibus, vel porta nunc viverra. In hac habitasse platea dictumst. Nunc pretium, ligula ultricies consequat sollicitudin, enim ex ullamcorper nisl.
+Desarrollé el **frontend** de una aplicación educativa de aprendizaje en Kichwa, organizando la documentación técnica del proyecto y utilizando **React Native** para el desarrollo, en combinación con **FastAPI** para el backend.
+
+---

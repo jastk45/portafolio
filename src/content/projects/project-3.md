@@ -1,19 +1,19 @@
 ---
-title: 'Project 3'
-description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci'
+title: 'Capacitación Voluntaria en Programación y Robótica'
+description: 'Capacitación a jóvenes de comunidades indígenas en programación, robótica, e inteligencia artificial.'
 image:
     url: '/GitHub.webp'
     alt: 'GitHub wallpaper'
 worksImage1:
     url: '/image-1.webp'
-    alt: 'first image of your project.'
+    alt: 'Capacitación en robótica'
 worksImage2:
     url: '/image-2.webp'
-    alt: 'second image of your project.'
-platform: Web
-stack: Astro, JavaScript
+    alt: 'Desarrollo de juegos por jóvenes'
+platform: Educación
+stack: Python, Arduino
 website: https://astro-milky-way.netlify.app/
-github: https://github.com/ttomczak3/Milky-Way
+github: https://github.com/Jastk45/Milky-Way
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus a tortor at molestie. Sed pellentesque leo auctor, auctor lorem nec, venenatis risus. Vivamus commodo ipsum vitae orci finibus, vel porta nunc viverra. In hac habitasse platea dictumst. Nunc pretium, ligula ultricies consequat sollicitudin, enim ex ullamcorper nisl.
+Como voluntario en la **Fundación de Desarrollo Social Integral “Pueblo y Vida”**, entrené a jóvenes de comunidades indígenas en **Python**, robótica, e inteligencia artificial, colaborando en talleres para fomentar el aprendizaje técnico en jóvenes vulnerables.
