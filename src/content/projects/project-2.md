@@ -1,19 +1,12 @@
 ---
-title: 'Diseño UI/UX para Aplicación de Pedidos'
-description: 'Diseño UI/UX de una aplicación de pedidos y visualización de errores bancarios en Agros EC.'
-image:
-    url: '/GitHub.webp'
-    alt: 'GitHub wallpaper'
-worksImage1:
-    url: '/image-1.webp'
-    alt: 'Diseño de interfaz en Figma'
-worksImage2:
-    url: '/image-2.webp'
-    alt: 'Interfaz de usuario final en la aplicación'
+title: 'JEANS AI Shopping Assistant — MesinaLabs'
+description: 'React chat widget and admin dashboard for an OpenAI-powered shopping assistant with multilingual support and analytics.'
 platform: Web
-stack: Figma, Adobe Photoshop, Adobe Illustrator
-website: https://astro-milky-way.netlify.app/
-github: https://github.com/Jastk45/Milky-Way
+stack: React, TypeScript, OpenAI API, i18next, GA4, Tailwind CSS, REST APIs
 ---
 
-Diseñé la interfaz de usuario y experiencia (UI/UX) para una aplicación de pedidos de una cafetería y una plataforma de visualización de errores para Banco Internacional, utilizando **Figma**, **Adobe Photoshop** y **Illustrator**.
+**React chat widget** with multilingual support (**i18next**) for the JEANS AI shopping assistant. Integrated **OpenAI** models for conversational commerce — product recommendations, sizing help, checkout assistance.
+
+Admin **dashboard** with conversation logs viewer, real-time performance metrics, and **GA4** analytics integration for behavior tracking and funnel analysis.
+
+Product **carousel components**, fully mobile-responsive design, and session tracking that captures browsing behavior to feed back into the recommendation logic.

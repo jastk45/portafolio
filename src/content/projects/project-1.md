@@ -1,21 +1,12 @@
 ---
-title: 'Análisis de Datos para Agros EC'
-description: 'Liderazgo en proyectos de análisis de datos para la optimización de ventas, utilizando Power BI y Python.'
-image:
-    url: '/GitHub.webp'
-    alt: 'GitHub wallpaper'
-worksImage1:
-    url: '/image-1.webp'
-    alt: 'Visualización de métricas en Power BI'
-worksImage2:
-    url: '/image-2.webp'
-    alt: 'Modelo predictivo de ventas'
-platform: Web
-stack: Python, Power BI, DAX, SQL, Pandas, Scikit-learn, matplotlib
-website: https://astro-milky-way.netlify.app/
-github: https://github.com/Jastk45/Milky-Way
+title: 'Enterprise Logistics Platform — Logiztik Alliance Group'
+description: 'Full-stack development of enterprise logistics systems with bidirectional replication across Azure, Miami, and Tumbaco data centers.'
+platform: Web · Enterprise
+stack: C#, .NET 8, ASP.NET Core, EF Core, Kafka, React 18, Next.js 14, TypeScript, React Native, SQL Server, Docker, Serilog, Elasticsearch, Azure DevOps
 ---
 
-En Agros EC, lideré proyectos de análisis de datos para visualizar métricas clave de ventas, construir y evaluar modelos predictivos como regresión y bosque aleatorio, y desarrollar insights estratégicos. Utilicé **Power BI**, **Python**, y **DAX** para optimizar la predicción de ventas y el rendimiento comercial.
+Cross-data-center transactional bidirectional replication across **Azure**, **Miami**, and **Tumbaco**. The replication layer keeps three independent SQL Server instances in sync so operations can continue from any site if one goes down.
 
----
+Full-stack feature work on **C#/.NET 8** (ASP.NET Core, EF Core, Kafka) on the backend, **React 18**, **Next.js 14** and **TypeScript** on the frontend. **React Native** companion app for warehouse personnel.
+
+**SQL Server** performance tuning — stored procedures, views, LINQ optimization. Logging through **Serilog** + **Elasticsearch** for searchable production diagnostics. Deployment across dev / QA / prod via **Azure DevOps** pipelines and **Docker** containers.

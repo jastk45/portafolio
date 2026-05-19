@@ -1,42 +1,214 @@
 ---
-import Layout from '../layouts/Layout.astro';
-const pageTitle = "Mi Portafolio";
----
-<Layout pageTitle={pageTitle}>
- <div class="gif-container">
-        <img class="gif" width="259" height="259" alt="RaccoonSpaceGif" src="/jaime.png"/>
-    </div>
-    <h1>Jaime Astudillo</h1>
-    <span class="badge"> INGENIERO EN TECNOLOGIAS DE LA INFORMACION  (Developer, Researcher, Data Scientist)</span> 
-    <h2>About</h2>
-    <p>
-        Como ingeniero en Tecnologías de la Información especializado en análisis de datos, aplico mi sólida formación en ciencias de la computación
-para extraer información accionable de conjuntos de datos complejos. Mi dominio de Python, SQL y herramientas avanzadas de visualización
-de datos me permite realizar análisis detallados, desarrollar modelos predictivos precisos y generar visualizaciones que facilitan la toma de de‑
-cisiones. Con experiencia en investigación académica y proyectos profesionales, combino habilidades técnicas y analíticas para resolver proble‑
-mas complejos de datos. Además, mis competencias comunicativas me permiten traducir resultados técnicos en estrategias claras para distintos
-públicos, alineando el análisis de datos con los objetivos empresariales.
-    </p>
-    <div class="center">
-        <a href="/Work Experience/">
-            <button class="btn">My portfolio</button>
-        </a>
-    </div>
-    <h2>Skills</h2>
-    <div class="skills center">
-        <img class="skills__img" width="46" height="46" alt="C#" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"/>
-        <img class="skills__img" width="46" height="46" alt="DotNetCore" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"/>
-        <img class="skills__img" width="46" height="46" alt="TypeScript" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"/>
-        <img class="skills__img" width="46" height="46" alt="Angular" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg"/>
-        <img class="skills__img" width="46" height="46" alt="Bootstrap" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"/>
-        <img class="skills__img" width="46" height="46" alt="CSS" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/>
-        <img class="skills__img" width="46" height="46" alt="HTML" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"/>
-        <img class="skills__img" width="46" height="46" alt="JavaScript" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"/>
-        <img class="skills__img" width="46" height="46" alt="Git" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"/>
-    </div>
-    <h2>Interests</h2>
-    <p>
-        apasionado por la ciencia de datos y la IA. Experto en integrar soluciones innovadoras y eficientes.
-    </p>
-</Layout>
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
 
+const pageTitle = "Jaime Astudillo — Forward-Deployed AI Engineer · LLM systems + Computer Vision · Published Researcher";
+
+const orcid    = "https://orcid.org/0009-0009-0602-2458";
+const scholar  = "https://scholar.google.com.ec/citations?user=3VGlQTgAAAAJ";
+const github   = "https://github.com/Jastk45";
+const linkedin = "https://www.linkedin.com/in/jastk45/";
+const mail     = "mailto:jastk45@gmail.com";
+
+const allPosts = (await getCollection("posts")).sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const experience = [
+    {
+        slug: "project-1",
+        period: "2026 — now",
+        role: "Full-Stack Developer",
+        company: "Logiztik Alliance Group",
+        note: ".NET 8 · React 18 · SQL Server · Kafka. Transactional bidirectional replication across Azure, Miami, and Tumbaco data centers."
+    },
+    {
+        slug: "project-2",
+        period: "2025 — 2026",
+        role: "Frontend Developer (Freelance)",
+        company: "MesinaLabs — JEANS AI",
+        note: "React + OpenAI conversational commerce widget. Multilingual (i18next), admin dashboard, GA4 analytics."
+    },
+    {
+        slug: "project-3",
+        period: "2024 — 2025",
+        role: "Frontend & AI Developer",
+        company: "IFG Innovaciones Agropecuarias",
+        note: "Next.js + ML for agricultural nutrition recommendations. Power BI integrations for sales insights."
+    },
+    {
+        slug: "project-4",
+        period: "2025",
+        role: "Business Support & Monitoring",
+        company: "Digevo — SENDIA",
+        note: "Grafana, Airflow, Nagios. SLA monitoring on transactional systems and SaaS billing platform."
+    }
+];
+
+const education = [
+    {
+        period: "2018 — 2024",
+        title: "Engineer in Information Technology",
+        inst: "Yachay Tech University, Ecuador"
+    },
+    {
+        period: "2024 — 2025",
+        title: "Diploma in Applied AI in Education",
+        inst: "UDLA, Ecuador"
+    }
+];
+
+const certs = [
+    { year: "2026", name: "Design Patterns & SOLID Principles in C# .NET", org: "Udemy" },
+    { year: "2024", name: "Transformer-Based NLP Applications",            org: "NVIDIA" },
+    { year: "2024", name: "Generative AI with Diffusion Models",           org: "NVIDIA" },
+    { year: "2024", name: "Scrum Foundation Professional Certificate",     org: "SFPC" },
+    { year: "2024", name: "EDA y Visualización de Datos",                  org: "—" },
+    { year: "2023", name: "JavaScript School",                             org: "Código Facilito" }
+];
+---
+
+<Layout pageTitle={pageTitle}>
+    <section class="hero">
+        <h1 class="hero__name">
+            Jaime Vicente
+            <span class="hero__surname">Astudillo Tobar</span>
+        </h1>
+        <p class="hero__role">Forward-Deployed AI Engineer · LLM systems + Computer Vision · Remote · EST</p>
+        <p class="hero__lede">
+            Published researcher shipping production systems. Four peer-reviewed
+            papers — reinforcement learning, Bayesian inference for ODE-defined
+            models, deep learning for leukemia detection, and YOLO-based drone
+            detection. Currently at <strong>Logiztik Alliance Group</strong>
+            on cross-data-center transactional replication with .NET 8, React 18,
+            and Kafka. Building LLM-integrated systems on OpenAI and AWS Bedrock.
+        </p>
+        <div class="hero__contact">
+            <a href={mail}>mail</a>
+            <a href={github}   target="_blank" rel="noopener noreferrer">github</a>
+            <a href={orcid}    target="_blank" rel="noopener noreferrer">orcid</a>
+            <a href={scholar}  target="_blank" rel="noopener noreferrer">scholar</a>
+            <a href={linkedin} target="_blank" rel="noopener noreferrer">linkedin</a>
+        </div>
+    </section>
+
+    <section class="section" id="featured">
+        <div class="section__label">
+            <h2>Featured figure</h2>
+            <span>Astudillo, TICEC 2024</span>
+        </div>
+        <figure class="figure">
+            <img
+                src="/tabla.png"
+                alt="Membrane potential V(t) over time. Three estimators — reference solution, GP+HMC, and PINNs — compared against noisy observations. The GP+HMC trace tracks the reference solution more closely than PINNs."
+                width="600"
+                height="463"
+                loading="eager"
+            />
+            <figcaption>
+                Membrane potential <var>V(t)</var>: reference solution, GP+HMC
+                estimate, PINNs estimate, and noisy observations. From
+                <em>Gaussian Processes and Hamiltonian Monte Carlo for Dual
+                State-Parameter Estimation in ODE-Defined Models</em>
+                (Astudillo, TICEC 2024).
+                <a href={orcid} target="_blank" rel="noopener noreferrer">Read on ORCID →</a>
+            </figcaption>
+        </figure>
+    </section>
+
+    <section class="section" id="research">
+        <div class="section__label">
+            <h2>Selected research</h2>
+            <span>
+                {allPosts.length} papers · full list on
+                <a href={orcid} target="_blank" rel="noopener noreferrer">ORCID</a>
+                · <a href={scholar} target="_blank" rel="noopener noreferrer">Scholar</a>
+            </span>
+        </div>
+        <ul class="rows">
+            {allPosts.map((p) => {
+                const href = p.data.external_url ?? `/posts/${p.slug}/`;
+                const external = !!p.data.external_url;
+                return (
+                    <li class="row">
+                        <div class="row__body">
+                            <h3>
+                                <a
+                                    href={href}
+                                    target={external ? "_blank" : undefined}
+                                    rel={external ? "noopener noreferrer" : undefined}
+                                >{p.data.title}</a>
+                            </h3>
+                            {p.data.summary && <p>{p.data.summary}</p>}
+                        </div>
+                        <div class="row__meta">{p.data.venue ?? p.data.date}</div>
+                    </li>
+                );
+            })}
+        </ul>
+    </section>
+
+    <section class="section" id="work">
+        <div class="section__label">
+            <h2>Selected work</h2>
+        </div>
+        <ul class="rows">
+            {experience.map((e) => (
+                <li class="row">
+                    <div class="row__body">
+                        <h3>
+                            <a href={`/projects/${e.slug}/`}>{e.role}</a><span class="row__sub"> — {e.company}</span>
+                        </h3>
+                        <p>{e.note}</p>
+                    </div>
+                    <div class="row__meta">{e.period}</div>
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <section class="section" id="education">
+        <div class="section__label">
+            <h2>Education</h2>
+        </div>
+        <ul class="rows">
+            {education.map((e) => (
+                <li class="row">
+                    <div class="row__body">
+                        <h3>{e.title}</h3>
+                        <p>{e.inst}</p>
+                    </div>
+                    <div class="row__meta">{e.period}</div>
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <section class="section" id="certifications">
+        <div class="section__label">
+            <h2>Certifications</h2>
+            <span>{certs.length} total</span>
+        </div>
+        <ul class="rows rows--compact">
+            {certs.map((c) => (
+                <li class="row">
+                    <div class="row__body">
+                        <h3 class="row__title--sm">{c.name}</h3>
+                        <p>{c.org}</p>
+                    </div>
+                    <div class="row__meta">{c.year}</div>
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <section class="section" id="languages">
+        <div class="section__label">
+            <h2>Languages</h2>
+        </div>
+        <dl class="def">
+            <dt>Spanish</dt><dd>Native</dd>
+            <dt>English</dt><dd>B2</dd>
+        </dl>
+    </section>
+</Layout>

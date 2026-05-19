@@ -1,19 +1,12 @@
 ---
-title: 'Capacitación Voluntaria en Programación y Robótica'
-description: 'Capacitación a jóvenes de comunidades indígenas en programación, robótica, e inteligencia artificial.'
-image:
-    url: '/GitHub.webp'
-    alt: 'GitHub wallpaper'
-worksImage1:
-    url: '/image-1.webp'
-    alt: 'Capacitación en robótica'
-worksImage2:
-    url: '/image-2.webp'
-    alt: 'Desarrollo de juegos por jóvenes'
-platform: Educación
-stack: Python, Arduino
-website: https://astro-milky-way.netlify.app/
-github: https://github.com/Jastk45/Milky-Way
+title: 'AI-Powered Agricultural Recommendation System — IFG Innovaciones'
+description: 'Web applications and ML-based nutritional recommendation system for agricultural crops, plus analytical dashboards for sales metrics.'
+platform: Web
+stack: Next.js, React, TypeScript, Python, TensorFlow, Scikit-learn, Power BI, MongoDB, FastAPI, Docker, Tailwind CSS
 ---
 
-Como voluntario en la **Fundación de Desarrollo Social Integral “Pueblo y Vida”**, entrené a jóvenes de comunidades indígenas en **Python**, robótica, e inteligencia artificial, colaborando en talleres para fomentar el aprendizaje técnico en jóvenes vulnerables.
+Web applications built with **Next.js**, **React** and **TypeScript**, including an **AI-powered nutritional recommendation system** for agricultural crops. Underlying models in **TensorFlow** and **Scikit-learn**, served from a **FastAPI** layer and persisted in **MongoDB**.
+
+Analytical **dashboards** with React and custom data visualization, integrating **Power BI** and **Python** pipelines for sales metrics and strategic insights consumed by the operations team.
+
+Containerized deployment via **Docker** for reproducibility across IFG's internal environments.

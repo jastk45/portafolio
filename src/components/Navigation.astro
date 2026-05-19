@@ -1,17 +1,11 @@
 ---
 import ThemeIcon from './ThemeIcon.astro';
 ---
-<div class="navbar">
-    <div class="navbar__title">
-        <a href="/">
-            <img src="/public/jastk45-white.png" alt="Jastk45 Logo" class="logo" />
-        </a>
-    </div>
-    <div class="navbar__menu">
-        <a href="/works/">Work Experience</a>
-        <a href="/posts/">Research Projects</a>
-        <a href="https://github.com/jastk45" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/Jastk45" target="_blank">LinkedIn</a>
+<div class="site-header">
+    <a class="site-header__wordmark" href="/">jastk45</a>
+    <nav class="site-header__nav" aria-label="Primary">
+        <a href="#work">work</a>
+        <a href="#research">research</a>
         <ThemeIcon />
-    </div>
+    </nav>
 </div>

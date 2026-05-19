@@ -8,41 +8,34 @@ const { pageTitle } = Astro.props;
 ---
 <!DOCTYPE html>
 <html transition:animate="none" lang="en">
-	<head>
+    <head>
         <meta charset="utf-8" />
-        <meta name="description" content="Astro description">
-        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content="Jaime Astudillo — Forward-Deployed AI Engineer. LLM systems on OpenAI and AWS Bedrock, computer vision for medical imaging, .NET 8 and React in production. Four peer-reviewed papers in reinforcement learning, Bayesian inference, deep learning, and YOLO. Remote, EST." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap" as="style">
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap" rel="stylesheet">       
+        <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin />
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
         <ViewTransitions />
-	</head>
-	<body>
-        <Header />
-        <main transition:animate={fade({ duration: '0.2s' })} >
-	    <slot />
+    </head>
+    <body>
+        <div class="sheet">
+            <Header />
+            <main transition:animate={fade({ duration: '0.18s' })}>
+                <slot />
+            </main>
             <Footer />
-        </main>
+        </div>
         <script>
             function colorMode() {
-                if (
-                    localStorage.theme === "light" ||
-                    (!("theme" in localStorage) &&
-                    window.matchMedia("(prefers-color-scheme: light)").matches)
-                ) {
-                    document.documentElement.classList.add("light");
-                } else {
-                    document.documentElement.classList.remove("light");
-                }
-              }
-            
+                const stored = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const isDark = stored === 'dark' || (!stored && prefersDark);
+                document.documentElement.classList.toggle('dark', isDark);
+            }
             colorMode();
             document.addEventListener('astro:after-swap', colorMode);
         </script>
-	</body>
+    </body>
 </html>
-
