@@ -19,31 +19,57 @@ const allPosts = (await getCollection("posts")).sort(
 const experience = [
     {
         slug: "project-1",
+        tabLabel: "logiztik",
         period: "2026–now",
         role: "Full-Stack Developer",
         company: "Logiztik Alliance Group",
-        note: ".NET 8 · React 18 · SQL Server · Kafka. Transactional bidirectional replication across Azure, Miami, and Tumbaco data centers."
+        note: ".NET 8 · React 18 · SQL Server · Kafka. Transactional bidirectional replication across Azure, Miami, and Tumbaco data centers.",
+        bullets: [
+            "Cross-data-center bidirectional replication keeping three SQL Server sites in sync, 1–3s replication latency.",
+            "Full-stack feature work on .NET 8 / ASP.NET Core / EF Core backend and React 18 / Next.js 14 / TypeScript frontend.",
+            "Stored-procedure tuning and LINQ optimization for thousands of logistics transactions per day.",
+            "Structured logging via Serilog into Elasticsearch; CI/CD through Azure DevOps and Docker."
+        ]
     },
     {
         slug: "project-2",
+        tabLabel: "mesinalabs",
         period: "2025–2026",
-        role: "Frontend Developer (Freelance)",
-        company: "MesinaLabs · JEANS AI",
-        note: "React + OpenAI conversational commerce widget. Multilingual (i18next), admin dashboard, GA4 analytics."
+        role: "Full-Stack AI Engineer (Freelance)",
+        company: "MesinaLabs · JEANS.CH",
+        note: "Embeddable shopping assistant for a Swiss jeans retailer. Next.js 16 widget with Shadow-DOM isolation, FastAPI + LangGraph backend.",
+        bullets: [
+            "Next.js 16 / React 19 widget embeddable via single <script> tag with full Shadow DOM CSS isolation.",
+            "FastAPI endpoints and LangGraph agent (graph + tools + prompts) for conversational commerce.",
+            "Multi-language detection (EN, DE, FR) with FastText + Lingua; sentence-transformers for retrieval.",
+            "Load-tested with Locust at 100–200 concurrent users with 80% Redis cache hit rate."
+        ]
     },
     {
         slug: "project-3",
+        tabLabel: "ifg",
         period: "2024–2025",
         role: "Frontend & AI Developer",
         company: "IFG Innovaciones Agropecuarias",
-        note: "Next.js + ML for agricultural nutrition recommendations. Power BI integrations for sales insights."
+        note: "Next.js + ML for agricultural nutrition recommendations. Power BI integrations for sales insights.",
+        bullets: [
+            "Next.js web applications with TensorFlow and Scikit-learn models served via FastAPI.",
+            "Recommendation system for agricultural crop nutrition, deployed via Docker.",
+            "Power BI integrations and Python pipelines for sales metrics and strategic dashboards."
+        ]
     },
     {
         slug: "project-4",
+        tabLabel: "digevo",
         period: "2025",
         role: "Business Support & Monitoring",
         company: "Digevo · SENDIA",
-        note: "Grafana, Airflow, Nagios. SLA monitoring on transactional systems and SaaS billing platform."
+        note: "Grafana, Airflow, Nagios. SLA monitoring on transactional systems and SaaS billing platform.",
+        bullets: [
+            "Monitoring transactional systems through Grafana dashboards and Airflow pipelines.",
+            "Remote SQL operations and SMPP server interventions for SMS-billing flows.",
+            "Incident triage through Nagios + Freshdesk; documented runbooks for first-line support."
+        ]
     }
 ];
 
@@ -170,19 +196,41 @@ const certs = [
         <div class="section__label">
             <h2>Selected work</h2>
         </div>
-        <ul class="rows">
-            {experience.map((e) => (
-                <li class="row">
-                    <div class="row__body">
-                        <h3>
-                            <a href={`/projects/${e.slug}/`}>{e.role}</a><span class="row__sub"> · {e.company}</span>
-                        </h3>
-                        <p>{e.note}</p>
-                    </div>
-                    <div class="row__meta">{e.period}</div>
-                </li>
+        <div class="work-tabs" data-work-tabs>
+            <div class="work-tabs__list" role="tablist" aria-label="Selected work">
+                <span class="work-tabs__indicator" aria-hidden="true"></span>
+                {experience.map((e, i) => (
+                    <button
+                        type="button"
+                        role="tab"
+                        id={`work-tab-${i}`}
+                        aria-selected={i === 0 ? "true" : "false"}
+                        aria-controls={`work-panel-${i}`}
+                        tabindex={i === 0 ? 0 : -1}
+                        class="work-tabs__tab"
+                        data-index={i}
+                    >{e.tabLabel}</button>
+                ))}
+            </div>
+            {experience.map((e, i) => (
+                <div
+                    id={`work-panel-${i}`}
+                    role="tabpanel"
+                    aria-labelledby={`work-tab-${i}`}
+                    hidden={i !== 0}
+                    class="work-tabs__panel"
+                >
+                    <h3 class="work-tabs__role">
+                        <a href={`/projects/${e.slug}/`}>{e.role}</a>
+                        <span class="work-tabs__company"> @ {e.company}</span>
+                    </h3>
+                    <p class="work-tabs__period">{e.period}</p>
+                    <ul class="work-tabs__bullets">
+                        {e.bullets.map((b) => <li>{b}</li>)}
+                    </ul>
+                </div>
             ))}
-        </ul>
+        </div>
     </section>
 
     <section class="section" id="background">
@@ -229,3 +277,87 @@ const certs = [
         </div>
     </section>
 </Layout>
+
+<script>
+    function initWorkTabs() {
+        const root = document.querySelector<HTMLElement>('[data-work-tabs]');
+        if (!root) return;
+
+        const tabs    = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+        const panels  = Array.from(root.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+        const indicator = root.querySelector<HTMLElement>('.work-tabs__indicator');
+        const list = root.querySelector<HTMLElement>('.work-tabs__list');
+        if (!tabs.length || !indicator || !list) return;
+
+        function isDesktop() {
+            return window.matchMedia('(min-width: 800px)').matches;
+        }
+
+        function moveIndicator(tab: HTMLButtonElement) {
+            const tabRect = tab.getBoundingClientRect();
+            const listRect = list!.getBoundingClientRect();
+            if (isDesktop()) {
+                const y = tabRect.top - listRect.top;
+                indicator!.style.transform = `translateY(${y}px)`;
+                indicator!.style.height = `${tabRect.height}px`;
+                indicator!.style.width = '2px';
+            } else {
+                const x = tabRect.left - listRect.left + list!.scrollLeft;
+                indicator!.style.transform = `translateX(${x}px)`;
+                indicator!.style.width = `${tabRect.width}px`;
+                indicator!.style.height = '2px';
+            }
+        }
+
+        function activate(index: number, focus = true) {
+            tabs.forEach((tab, i) => {
+                const active = i === index;
+                tab.setAttribute('aria-selected', active ? 'true' : 'false');
+                tab.setAttribute('tabindex', active ? '0' : '-1');
+            });
+            panels.forEach((panel, i) => {
+                if (i === index) {
+                    panel.removeAttribute('hidden');
+                } else {
+                    panel.setAttribute('hidden', '');
+                }
+            });
+            moveIndicator(tabs[index]);
+            if (focus) tabs[index].focus();
+        }
+
+        tabs.forEach((tab, i) => {
+            tab.addEventListener('click', () => activate(i));
+            tab.addEventListener('keydown', (e: KeyboardEvent) => {
+                let next = -1;
+                if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+                else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+                else if (e.key === 'Home') next = 0;
+                else if (e.key === 'End') next = tabs.length - 1;
+                if (next >= 0) {
+                    e.preventDefault();
+                    activate(next);
+                }
+            });
+        });
+
+        // initial position (defer one frame so layout is settled)
+        requestAnimationFrame(() => {
+            const initial = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
+            moveIndicator(tabs[initial >= 0 ? initial : 0]);
+        });
+
+        // reposition on resize
+        let resizeTimer: number | undefined;
+        window.addEventListener('resize', () => {
+            window.clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(() => {
+                const current = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
+                moveIndicator(tabs[current >= 0 ? current : 0]);
+            }, 100);
+        });
+    }
+
+    initWorkTabs();
+    document.addEventListener('astro:after-swap', initWorkTabs);
+</script>
