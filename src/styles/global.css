@@ -295,6 +295,23 @@ html.dark {
         color: var(--accent);
         text-decoration-color: var(--accent);
     }
+    /* Briefly accent the contact strip when navigated via #contact anchor */
+    .hero__contact:target {
+        animation: contact-pulse 1400ms var(--ease-out-quart) 100ms 1;
+    }
+    @keyframes contact-pulse {
+        0%   { background: transparent; }
+        20%  { background: oklch(0.96 0.04 30 / 0.45); }
+        100% { background: transparent; }
+    }
+    html.dark .hero__contact:target {
+        animation-name: contact-pulse-dark;
+    }
+    @keyframes contact-pulse-dark {
+        0%   { background: transparent; }
+        20%  { background: oklch(0.40 0.10 30 / 0.35); }
+        100% { background: transparent; }
+    }
 
     /* ---- Hero stats (above-the-fold signal strip) ---- */
     .hero__stats {
