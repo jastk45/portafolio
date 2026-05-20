@@ -3,6 +3,8 @@ import { ViewTransitions } from 'astro:transitions';
 import { fade } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SideSocials from '../components/SideSocials.astro';
+import SideEmail from '../components/SideEmail.astro';
 import '../styles/global.css';
 const { pageTitle } = Astro.props;
 ---
@@ -32,8 +34,10 @@ const { pageTitle } = Astro.props;
         <ViewTransitions />
     </head>
     <body>
+        <Header />
+        <SideSocials />
+        <SideEmail />
         <div class="sheet">
-            <Header />
             <main transition:animate={fade({ duration: '0.18s' })}>
                 <slot />
             </main>

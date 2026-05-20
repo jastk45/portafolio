@@ -2,6 +2,16 @@
 import { getCollection } from "astro:content";
 import { Image } from 'astro:assets';
 import Layout from "../layouts/Layout.astro";
+import jaimePhoto from "../assets/jaime.png";
+
+const skills = [
+    "C# / .NET 8",
+    "Python",
+    "TypeScript",
+    "React + Next.js",
+    "OpenAI + LangGraph",
+    "PyTorch",
+];
 
 const pageTitle = "Jaime Astudillo · Forward-Deployed AI Engineer · LLM systems + Computer Vision · Published Researcher";
 
@@ -98,6 +108,7 @@ const certs = [
 
 <Layout pageTitle={pageTitle}>
     <section class="hero">
+        <p class="hero__eyebrow">Hi, my name is</p>
         <h1 class="hero__name">
             Jaime Vicente
             <span class="hero__surname">Astudillo Tobar</span>
@@ -133,63 +144,109 @@ const certs = [
                 · <a href={scholar} target="_blank" rel="noopener noreferrer">Scholar</a>
             </span>
         </div>
-        {(() => {
-            const [featured, ...rest] = allPosts;
-            const featuredHref = featured.data.external_url ?? `/posts/${featured.slug}/`;
-            const featuredExternal = !!featured.data.external_url;
-            return (
-                <div class="bento">
-                    <a
-                        class="bento__card bento__card--lead"
-                        href={featuredHref}
-                        target={featuredExternal ? "_blank" : undefined}
-                        rel={featuredExternal ? "noopener noreferrer" : undefined}
-                    >
-                        {featured.data.image && (
-                            <div class="bento__thumb">
+        <div class="featured-list">
+            {allPosts.map((p, i) => {
+                const href = p.data.external_url ?? `/posts/${p.slug}/`;
+                const external = !!p.data.external_url;
+                const reversed = i % 2 === 1;
+                return (
+                    <article class:list={["featured", { "featured--reversed": reversed }]}>
+                        {p.data.image && (
+                            <a
+                                class="featured__image"
+                                href={href}
+                                target={external ? "_blank" : undefined}
+                                rel={external ? "noopener noreferrer" : undefined}
+                                aria-label={p.data.title}
+                            >
                                 <Image
-                                    src={featured.data.image.src}
-                                    alt={featured.data.image.alt}
-                                    loading="eager"
+                                    src={p.data.image.src}
+                                    alt={p.data.image.alt}
+                                    loading={i === 0 ? "eager" : "lazy"}
                                     format="webp"
                                     quality={82}
                                     widths={[400, 800, 1200]}
-                                    sizes="(min-width: 800px) 600px, 100vw"
+                                    sizes="(min-width: 800px) 55vw, 100vw"
                                 />
-                            </div>
+                            </a>
                         )}
-                        <div class="bento__body">
-                            <span class="bento__tag">{featured.data.authorPosition ?? featured.data.venue}</span>
-                            <h3 class="bento__title">{featured.data.title}</h3>
-                            {featured.data.summary && <p class="bento__summary">{featured.data.summary}</p>}
-                            <span class="bento__meta">{featured.data.venue ?? featured.data.date} →</span>
+                        <div class="featured__content">
+                            <p class="featured__overline">Featured paper · {p.data.authorPosition ?? p.data.venue}</p>
+                            <h3 class="featured__title">
+                                <a
+                                    href={href}
+                                    target={external ? "_blank" : undefined}
+                                    rel={external ? "noopener noreferrer" : undefined}
+                                >{p.data.title}</a>
+                            </h3>
+                            {p.data.summary && (
+                                <div class="featured__description">
+                                    <p>{p.data.summary}</p>
+                                </div>
+                            )}
+                            {p.data.venue && (
+                                <p class="featured__venue">
+                                    <span>{p.data.venue}</span>
+                                </p>
+                            )}
+                            <p class="featured__links">
+                                <a
+                                    href={href}
+                                    target={external ? "_blank" : undefined}
+                                    rel={external ? "noopener noreferrer" : undefined}
+                                    aria-label={`Read ${p.data.title}`}
+                                >Read paper →</a>
+                            </p>
                         </div>
-                    </a>
-                    <ul class="bento__list">
-                        {rest.map((p) => {
-                            const href = p.data.external_url ?? `/posts/${p.slug}/`;
-                            const external = !!p.data.external_url;
-                            return (
-                                <li>
-                                    <a
-                                        class="bento__card bento__card--small"
-                                        href={href}
-                                        target={external ? "_blank" : undefined}
-                                        rel={external ? "noopener noreferrer" : undefined}
-                                    >
-                                        <div class="bento__body">
-                                            <span class="bento__tag">{p.data.authorPosition ?? p.data.venue}</span>
-                                            <h3 class="bento__title">{p.data.title}</h3>
-                                            <span class="bento__meta">{p.data.venue ?? p.data.date} →</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
-            );
-        })()}
+                    </article>
+                );
+            })}
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="section__label">
+            <h2>About</h2>
+        </div>
+        <div class="about">
+            <div class="about__body">
+                <p>
+                    I'm an IT Engineer from Ecuador focused on bringing
+                    research-grade machine learning into production systems.
+                    My background is split between published research (four
+                    peer-reviewed papers across reinforcement learning,
+                    Bayesian inference, computer vision, and YOLO-based
+                    drone detection) and shipping enterprise software.
+                </p>
+                <p>
+                    Today I'm at <strong>Logiztik Alliance Group</strong>
+                    on cross-data-center transactional replication with
+                    .NET 8 and Kafka, and I build LLM-integrated products
+                    on OpenAI and AWS Bedrock as a freelance Full-Stack
+                    AI Engineer.
+                </p>
+                <p>
+                    I care about the parts that make a system actually
+                    work in production: latency, observability, honest
+                    evaluation, reproducibility, and a clear story for
+                    why each trade-off was made.
+                </p>
+                <p>Here are a few technologies I've been working with recently:</p>
+                <ul class="about__skills">
+                    {skills.map((s) => <li>{s}</li>)}
+                </ul>
+            </div>
+            <div class="about__photo">
+                <Image
+                    src={jaimePhoto}
+                    alt="Jaime Astudillo"
+                    format="webp"
+                    quality={82}
+                    widths={[200, 400]}
+                    sizes="(min-width: 800px) 280px, 200px"
+                />
+            </div>
+        </div>
     </section>
 
     <section class="section" id="work">

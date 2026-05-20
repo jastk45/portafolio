@@ -1,13 +1,45 @@
 ---
 import ThemeIcon from './ThemeIcon.astro';
 ---
-<div class="site-header">
+<div class="site-header" data-site-header>
     <a class="site-header__wordmark" href="/">Jastk45</a>
     <nav class="site-header__nav" aria-label="Primary">
-        <a href="/#research">research</a>
-        <a href="/#work">work</a>
-        <a href="/#background">background</a>
-        <a href="/#contact">contact</a>
+        <a href="/#about"><span class="site-header__num">01.</span> About</a>
+        <a href="/#work"><span class="site-header__num">02.</span> Work</a>
+        <a href="/#research"><span class="site-header__num">03.</span> Research</a>
+        <a href="/#background"><span class="site-header__num">04.</span> Background</a>
+        <a href="/#contact"><span class="site-header__num">05.</span> Contact</a>
         <ThemeIcon />
     </nav>
 </div>
+
+<script>
+    function initStickyHeader() {
+        const header = document.querySelector<HTMLElement>('[data-site-header]');
+        if (!header) return;
+
+        let lastY = window.scrollY;
+        let ticking = false;
+        const threshold = 80;
+
+        function update() {
+            const y = window.scrollY;
+            const goingDown = y > lastY;
+            const scrolled = y > threshold;
+            header!.classList.toggle('site-header--scrolled', scrolled);
+            header!.classList.toggle('site-header--hidden', scrolled && goingDown && y > 200);
+            lastY = y;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(update);
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
+    initStickyHeader();
+    document.addEventListener('astro:after-swap', initStickyHeader);
+</script>
