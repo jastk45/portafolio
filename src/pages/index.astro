@@ -31,7 +31,7 @@ const allPosts = (await getCollection("posts")).sort(
 const experience = [
     {
         slug: "project-1",
-        tabLabel: "logiztik",
+        tabLabel: "Logiztik",
         period: "2026–now",
         role: "Full-Stack Developer",
         company: "Logiztik Alliance Group",
@@ -45,7 +45,7 @@ const experience = [
     },
     {
         slug: "project-2",
-        tabLabel: "mesinalabs",
+        tabLabel: "MesinaLabs",
         period: "2025–2026",
         role: "Full-Stack AI Engineer (Freelance)",
         company: "MesinaLabs · JEANS.CH",
@@ -59,7 +59,7 @@ const experience = [
     },
     {
         slug: "project-3",
-        tabLabel: "ifg",
+        tabLabel: "Nutribalance",
         period: "2024–2025",
         role: "Frontend & AI Developer",
         company: "IFG Innovaciones Agropecuarias",
@@ -72,7 +72,7 @@ const experience = [
     },
     {
         slug: "project-4",
-        tabLabel: "digevo",
+        tabLabel: "Digevo",
         period: "2025",
         role: "Business Support & Monitoring",
         company: "Digevo · SENDIA",
@@ -136,28 +136,29 @@ const certs = [
         <div class="about">
             <div class="about__body">
                 <p>
-                    Hey, I'm Jaime. I'm a Software Engineer focused on
-                    <strong> AI/ML and full-stack development</strong>,
-                    building software for logistics, agriculture, healthcare,
-                    and telecom.
+                    My background sits between two worlds that don't talk
+                    to each other often enough: peer-reviewed research
+                    (RL, Bayesian inference, computer vision) and
+                    production engineering at messy, real-world scale
+                    (logistics, agriculture, healthcare, telecom).
                 </p>
                 <p>
-                    I work across enterprise web platforms, AI-powered
-                    products, REST APIs, and data systems. Recently I've
-                    been shipping cross-data-center replication at
-                    <strong> Logiztik Alliance Group</strong> on .NET 8 +
-                    Kafka, and LLM-integrated commerce assistants on
-                    Next.js + FastAPI + LangGraph.
+                    I care about the parts of a system most people skip
+                    over once the demo runs: latency budgets, honest
+                    evaluation, observability, the boring failure modes,
+                    the trade-offs you can defend in a code review. A
+                    benchmark that beats the baseline is interesting; a
+                    system that holds up when the network flaps at 3am
+                    is what actually ships.
                 </p>
                 <p>
-                    A few things I'm proud of:
+                    The result is a working style that tries to bridge
+                    the gap. I'm comfortable taking a research idea from
+                    paper to a service behind an API, and equally
+                    comfortable writing the SQL that keeps it fast in
+                    production. Below are the tools I reach for most
+                    these days:
                 </p>
-                <ul class="about__highlights">
-                    <li>Reduced API response times by 40% through backend and database tuning.</li>
-                    <li>Shipped AI-powered recommendation systems and analytical dashboards used by real operators.</li>
-                    <li>Co-authored four peer-reviewed papers in deep learning, reinforcement learning, and computer vision (1× first author, Springer 2023).</li>
-                </ul>
-                <p>Some of the technologies I've been working with recently:</p>
                 <ul class="about__skills">
                     {skills.map((s) => <li>{s}</li>)}
                 </ul>
@@ -340,7 +341,7 @@ const certs = [
                 and I try to reply within a few days.
             </p>
             <div class="contact__methods">
-                <a class="contact__primary" href={mail}>jastk45@gmail.com</a>
+                <a class="contact__primary" href={mail}>Say hi</a>
                 <ul class="contact__list">
                     <li><a href={phone}>+593 969 081 119</a></li>
                     <li><a href={github}   target="_blank" rel="noopener noreferrer">github.com/Jastk45</a></li>

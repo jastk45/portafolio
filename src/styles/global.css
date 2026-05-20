@@ -1663,14 +1663,24 @@ html.dark {
         max-width: none;
     }
 
-    /* Featured papers at desktop: 12-col grid, image overlaps with text */
+    /* Featured papers at desktop: 12-col grid. The image and content
+       sit on the same grid cell (rows 1) so the description card
+       overlaps the image in the middle. The content needs vertical
+       padding so the title clears the image's top edge — without
+       padding, the title lands ON the image because the content
+       block (overline + title + description + venue + links) is
+       slightly shorter than the image. */
     .featured-list {
-        gap: var(--space-20);
+        gap: var(--space-2);
     }
     .featured {
         grid-template-columns: repeat(12, 1fr);
         gap: 0;
         align-items: center;
+        position: relative;
+        padding-block: 6rem;
+        max-width: 56rem;
+        margin-inline: auto;
     }
     .featured__image {
         grid-column: 1 / span 7;
@@ -1683,9 +1693,35 @@ html.dark {
         z-index: 2;
         text-align: right;
         align-items: flex-end;
+        justify-content: center;
+        min-height: 100%;
+    }
+    /* Pull overline + title up into the padding-top reserved above the image */
+    .featured__overline {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+    }
+    .featured__title {
+        position: absolute;
+        top: 1.75rem;
+        right: 0;
+        left: 34%;
+        margin: 0;
     }
     .featured__description {
         max-width: 100%;
+        margin-top: 4.5rem;
+    }
+    .featured--reversed .featured__overline {
+        right: auto;
+        left: 0;
+    }
+    .featured--reversed .featured__title {
+        right: 33%;
+        left: 0;
+        text-align: left;
     }
     .featured--reversed .featured__image {
         grid-column: 6 / -1;
