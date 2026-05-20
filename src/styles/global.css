@@ -90,8 +90,9 @@
     --step-2:  clamp(1.5rem, 2.5vw, 1.875rem);      /* 24-30px : section headings */
     --step-h:  clamp(2.5rem, 8vw, 5.5rem);          /* hero */
 
-    /* Motion */
-    --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
+    /* Motion (Emil Kowalski curves: stronger ease-out, custom in-out) */
+    --ease-out-quart: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out:    cubic-bezier(0.77, 0, 0.175, 1);
     --duration-quick:  200ms;
     --duration-normal: 320ms;
 }
@@ -406,6 +407,11 @@ html.dark {
     .row__body h3 a:hover {
         color: var(--accent);
     }
+    .row__body h3 a:active {
+        transform: scale(0.985);
+        transition: transform 100ms var(--ease-out-quart);
+        display: inline-block;
+    }
     .row:hover .row__body h3 a::after {
         opacity: 1;
         translate: 0 0;
@@ -455,6 +461,10 @@ html.dark {
         border-color: var(--text);
         background: var(--bg);
         transform: translateY(-1px);
+    }
+    .bento__card:active {
+        transform: scale(0.985);
+        transition-duration: 100ms;
     }
     .bento__card--lead {
         grid-template-columns: 1fr;
@@ -523,6 +533,24 @@ html.dark {
     }
     .bento__card--small {
         min-height: 9rem;
+    }
+
+    /* Stagger small cards on initial paint (Emil: 30-80ms between items) */
+    @keyframes bento-rise {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    .bento__card--lead {
+        animation: bento-rise 520ms var(--ease-out-quart) 200ms both;
+    }
+    .bento__list li:nth-child(1) .bento__card--small {
+        animation: bento-rise 480ms var(--ease-out-quart) 280ms both;
+    }
+    .bento__list li:nth-child(2) .bento__card--small {
+        animation: bento-rise 480ms var(--ease-out-quart) 340ms both;
+    }
+    .bento__list li:nth-child(3) .bento__card--small {
+        animation: bento-rise 480ms var(--ease-out-quart) 400ms both;
     }
 
     /* ---- Background grid (Education + Certs + Languages) ---- */
@@ -661,7 +689,7 @@ html.dark {
                     transform 80ms var(--ease-out-quart);
     }
     #themeToggle:hover  { color: var(--text); }
-    #themeToggle:active { transform: scale(0.92); }
+    #themeToggle:active { transform: scale(0.94); }
     #themeToggle svg { width: 16px; height: 16px; }
 
     /* ---- Hide legacy decorative gifs on /works /posts and markdown layouts ---- */
