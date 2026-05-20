@@ -19,8 +19,8 @@ external_url: 'https://orcid.org/0009-0009-0602-2458'
 
 ## Problem
 
-Solving non-linear ODEs that describe real physical systems — population
-dynamics, neuron firing, epidemic spread — under noisy, sparse data is
+Solving non-linear ODEs that describe real physical systems, population
+dynamics, neuron firing, epidemic spread, under noisy, sparse data is
 hard with classical numerical methods. Two modern alternatives compete:
 Physics-Informed Neural Networks (PINNs) embed the governing equation
 into the training loss; Gaussian Processes with Hamiltonian Monte Carlo
@@ -63,7 +63,7 @@ simultaneously from the noisy observations.
 
 ## Results
 
-**Lotka-Volterra — RMSE / MAE on state reconstruction:**
+**Lotka-Volterra, RMSE / MAE on state reconstruction:**
 
 | Function | Technique | RMSE | MAE |
 |---|---|---|---|
@@ -74,7 +74,7 @@ simultaneously from the noisy observations.
 
 GP+HMC beat PINNs by ~2.4× on prey, ~7× on predator.
 
-**FitzHugh-Nagumo — RMSE / MAE on state reconstruction:**
+**FitzHugh-Nagumo, RMSE / MAE on state reconstruction:**
 
 | Function | Technique | RMSE | MAE |
 |---|---|---|---|
@@ -93,7 +93,7 @@ GP+HMC ~5× more accurate on both states.
 | Lotka-Volterra | 0.5 | 38 s | 160 s | 4.2× |
 | FitzHugh-Nagumo | 0.1 | 38 s | 378 s | **10×** |
 | FitzHugh-Nagumo | 0.5 | 38 s | 385 s | 10× |
-| SIR / COVID Japan | — | 55 s | 232 s | 4.2× |
+| SIR / COVID Japan |, | 55 s | 232 s | 4.2× |
 
 GP+HMC won on accuracy *and* wall-clock time in every experiment.
 

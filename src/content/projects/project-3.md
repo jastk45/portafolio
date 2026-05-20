@@ -1,5 +1,5 @@
 ---
-title: 'AI-Powered Agricultural Recommendation System — IFG Innovaciones'
+title: 'AI-Powered Agricultural Recommendation System · IFG Innovaciones'
 description: 'Web applications and ML-based nutritional recommendation system for agricultural crops, plus analytical dashboards for sales metrics.'
 platform: Web
 stack: Next.js, React, TypeScript, Python, TensorFlow, Scikit-learn, Power BI, MongoDB, FastAPI, Docker, Tailwind CSS

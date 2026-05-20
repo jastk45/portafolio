@@ -22,7 +22,7 @@ external_url: 'https://orcid.org/0009-0009-0602-2458'
 
 Artificial neural networks suffer from *catastrophic forgetting*:
 training on a new task overwrites what the network learned for the
-old one. Animals do not have this problem — children learn new
+old one. Animals do not have this problem, children learn new
 skills without losing previous ones. The paper proposes a
 reinforcement-learning agent with a biologically inspired *continual
 learning* mechanism, validated on a physical robot playing 3×3×3
@@ -34,7 +34,7 @@ Fifth author of five. The methodology, the energy-barrier formulation,
 the Bellman-equation extension, and the paper itself were led by the
 LoUISE Research Group (University of Castilla-La Mancha) and the MIND
 Research Group. **I contributed to the C++ / OpenCV implementation of
-the agent and to the physical robot integration** — the webcam
+the agent and to the physical robot integration**, the webcam
 perception loop, the sparse-code generation from board state, and the
 robot-arm action layer that places tokens on the board.
 
@@ -44,7 +44,7 @@ The agent has three coupled components:
 
 1. **Webcam + CNN** convert a 480×480 board image into a sparse code
    ("000" = empty, "100" = X, "001" = O) over the nine squares.
-2. **Adviser network** — a fully connected classifier — proposes
+2. **Adviser network**, a fully connected classifier, proposes
    playing policies from that sparse code.
 3. **Neural agent** of nine mutually inhibiting sigmoidal neurons,
    driven by a shared ramp input K. As K grows, neurons race toward a
@@ -85,4 +85,4 @@ controlled arm.
 
 Published at TICEC 2024. Full derivation of the energy-barrier
 mechanism, the Bellman extension, and the staged-learning protocol
-are in the paper — read on ORCID.
+are in the paper, read on ORCID.

@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 
-const pageTitle = "Jaime Astudillo — Forward-Deployed AI Engineer · LLM systems + Computer Vision · Published Researcher";
+const pageTitle = "Jaime Astudillo · Forward-Deployed AI Engineer · LLM systems + Computer Vision · Published Researcher";
 
 const orcid    = "https://orcid.org/0009-0009-0602-2458";
 const scholar  = "https://scholar.google.com.ec/citations?user=3VGlQTgAAAAJ";
@@ -17,21 +17,21 @@ const allPosts = (await getCollection("posts")).sort(
 const experience = [
     {
         slug: "project-1",
-        period: "2026 — now",
+        period: "2026–now",
         role: "Full-Stack Developer",
         company: "Logiztik Alliance Group",
         note: ".NET 8 · React 18 · SQL Server · Kafka. Transactional bidirectional replication across Azure, Miami, and Tumbaco data centers."
     },
     {
         slug: "project-2",
-        period: "2025 — 2026",
+        period: "2025–2026",
         role: "Frontend Developer (Freelance)",
-        company: "MesinaLabs — JEANS AI",
+        company: "MesinaLabs · JEANS AI",
         note: "React + OpenAI conversational commerce widget. Multilingual (i18next), admin dashboard, GA4 analytics."
     },
     {
         slug: "project-3",
-        period: "2024 — 2025",
+        period: "2024–2025",
         role: "Frontend & AI Developer",
         company: "IFG Innovaciones Agropecuarias",
         note: "Next.js + ML for agricultural nutrition recommendations. Power BI integrations for sales insights."
@@ -40,19 +40,19 @@ const experience = [
         slug: "project-4",
         period: "2025",
         role: "Business Support & Monitoring",
-        company: "Digevo — SENDIA",
+        company: "Digevo · SENDIA",
         note: "Grafana, Airflow, Nagios. SLA monitoring on transactional systems and SaaS billing platform."
     }
 ];
 
 const education = [
     {
-        period: "2018 — 2024",
+        period: "2018–2024",
         title: "Engineer in Information Technology",
         inst: "Yachay Tech University, Ecuador"
     },
     {
-        period: "2024 — 2025",
+        period: "2024–2025",
         title: "Diploma in Applied AI in Education",
         inst: "UDLA, Ecuador"
     }
@@ -63,7 +63,7 @@ const certs = [
     { year: "2024", name: "Transformer-Based NLP Applications",            org: "NVIDIA" },
     { year: "2024", name: "Generative AI with Diffusion Models",           org: "NVIDIA" },
     { year: "2024", name: "Scrum Foundation Professional Certificate",     org: "SFPC" },
-    { year: "2024", name: "EDA y Visualización de Datos",                  org: "—" },
+    { year: "2024", name: "EDA y Visualización de Datos",                  org: "Self-paced" },
     { year: "2023", name: "JavaScript School",                             org: "Código Facilito" }
 ];
 ---
@@ -76,13 +76,16 @@ const certs = [
         </h1>
         <p class="hero__role">Forward-Deployed AI Engineer · LLM systems + Computer Vision · Remote · EST</p>
         <p class="hero__lede">
-            Published researcher shipping production systems. Four peer-reviewed
-            papers — reinforcement learning, Bayesian inference for ODE-defined
-            models, deep learning for leukemia detection, and YOLO-based drone
-            detection. Currently at <strong>Logiztik Alliance Group</strong>
-            on cross-data-center transactional replication with .NET 8, React 18,
-            and Kafka. Building LLM-integrated systems on OpenAI and AWS Bedrock.
+            Published researcher shipping production systems. Currently at
+            <strong>Logiztik Alliance Group</strong> on cross-data-center
+            transactional replication with .NET 8 and Kafka. Building
+            LLM-integrated products on OpenAI and AWS Bedrock.
         </p>
+        <ul class="hero__stats" aria-label="At a glance">
+            <li><strong>4</strong> peer-reviewed papers</li>
+            <li><strong>1×</strong> first author (Springer 2023)</li>
+            <li><strong>.NET 8</strong> · Python · React · LLMs</li>
+        </ul>
         <div class="hero__contact">
             <a href={mail}>mail</a>
             <a href={github}   target="_blank" rel="noopener noreferrer">github</a>
@@ -90,31 +93,6 @@ const certs = [
             <a href={scholar}  target="_blank" rel="noopener noreferrer">scholar</a>
             <a href={linkedin} target="_blank" rel="noopener noreferrer">linkedin</a>
         </div>
-    </section>
-
-    <section class="section" id="featured">
-        <div class="section__label">
-            <h2>Featured figure</h2>
-            <span>Astudillo et al., Springer 2023</span>
-        </div>
-        <figure class="figure">
-            <img
-                src="/dronee.png"
-                alt="TX/RX/jammer geometry: a remote controller (TX₁) and a jammer (TX₂) act on the drone receiver (RX), with the two range vectors r_{TX₁,RX} and r_{TX₂,RX} that define the deauthentication condition."
-                width="600"
-                height="340"
-                loading="eager"
-            />
-            <figcaption>
-                Transmitter / receiver / jammer geometry for the deauthentication
-                attack. From <em>Drone Detection and Anti-Drone System Using
-                YOLO: An Effective Approach to Airspace Security</em>
-                (Astudillo, Chachalo, Iza, Zhinin-Vera; Springer 2023).
-                First author. YOLOv8 detection at 95% accuracy; full
-                neutralisation averaging 2.3 s.
-                <a href={orcid} target="_blank" rel="noopener noreferrer">Read on ORCID →</a>
-            </figcaption>
-        </figure>
     </section>
 
     <section class="section" id="research">
@@ -126,27 +104,61 @@ const certs = [
                 · <a href={scholar} target="_blank" rel="noopener noreferrer">Scholar</a>
             </span>
         </div>
-        <ul class="rows">
-            {allPosts.map((p) => {
-                const href = p.data.external_url ?? `/posts/${p.slug}/`;
-                const external = !!p.data.external_url;
-                return (
-                    <li class="row">
-                        <div class="row__body">
-                            <h3>
-                                <a
-                                    href={href}
-                                    target={external ? "_blank" : undefined}
-                                    rel={external ? "noopener noreferrer" : undefined}
-                                >{p.data.title}</a>
-                            </h3>
-                            {p.data.summary && <p>{p.data.summary}</p>}
+        {(() => {
+            const [featured, ...rest] = allPosts;
+            const featuredHref = featured.data.external_url ?? `/posts/${featured.slug}/`;
+            const featuredExternal = !!featured.data.external_url;
+            return (
+                <div class="bento">
+                    <a
+                        class="bento__card bento__card--lead"
+                        href={featuredHref}
+                        target={featuredExternal ? "_blank" : undefined}
+                        rel={featuredExternal ? "noopener noreferrer" : undefined}
+                    >
+                        {featured.data.image && (
+                            <div class="bento__thumb">
+                                <img
+                                    src={featured.data.image.url}
+                                    alt={featured.data.image.alt}
+                                    loading="eager"
+                                    width="600"
+                                    height="340"
+                                />
+                            </div>
+                        )}
+                        <div class="bento__body">
+                            <span class="bento__tag">{featured.data.authorPosition ?? featured.data.venue}</span>
+                            <h3 class="bento__title">{featured.data.title}</h3>
+                            {featured.data.summary && <p class="bento__summary">{featured.data.summary}</p>}
+                            <span class="bento__meta">{featured.data.venue ?? featured.data.date} →</span>
                         </div>
-                        <div class="row__meta">{p.data.venue ?? p.data.date}</div>
-                    </li>
-                );
-            })}
-        </ul>
+                    </a>
+                    <ul class="bento__list">
+                        {rest.map((p) => {
+                            const href = p.data.external_url ?? `/posts/${p.slug}/`;
+                            const external = !!p.data.external_url;
+                            return (
+                                <li>
+                                    <a
+                                        class="bento__card bento__card--small"
+                                        href={href}
+                                        target={external ? "_blank" : undefined}
+                                        rel={external ? "noopener noreferrer" : undefined}
+                                    >
+                                        <div class="bento__body">
+                                            <span class="bento__tag">{p.data.authorPosition ?? p.data.venue}</span>
+                                            <h3 class="bento__title">{p.data.title}</h3>
+                                            <span class="bento__meta">{p.data.venue ?? p.data.date} →</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            );
+        })()}
     </section>
 
     <section class="section" id="work">
@@ -158,7 +170,7 @@ const certs = [
                 <li class="row">
                     <div class="row__body">
                         <h3>
-                            <a href={`/projects/${e.slug}/`}>{e.role}</a><span class="row__sub"> — {e.company}</span>
+                            <a href={`/projects/${e.slug}/`}>{e.role}</a><span class="row__sub"> · {e.company}</span>
                         </h3>
                         <p>{e.note}</p>
                     </div>
@@ -168,48 +180,47 @@ const certs = [
         </ul>
     </section>
 
-    <section class="section" id="education">
+    <section class="section" id="background">
         <div class="section__label">
-            <h2>Education</h2>
+            <h2>Background</h2>
         </div>
-        <ul class="rows">
-            {education.map((e) => (
-                <li class="row">
-                    <div class="row__body">
-                        <h3>{e.title}</h3>
-                        <p>{e.inst}</p>
-                    </div>
-                    <div class="row__meta">{e.period}</div>
-                </li>
-            ))}
-        </ul>
-    </section>
-
-    <section class="section" id="certifications">
-        <div class="section__label">
-            <h2>Certifications</h2>
-            <span>{certs.length} total</span>
+        <div class="bg-grid">
+            <div class="bg-col">
+                <h3 class="bg-col__title">Education</h3>
+                <ul class="bg-list">
+                    {education.map((e) => (
+                        <li>
+                            <span class="bg-list__title">{e.title}</span>
+                            <span class="bg-list__sub">{e.inst}</span>
+                            <span class="bg-list__meta">{e.period}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div class="bg-col">
+                <h3 class="bg-col__title">Certifications</h3>
+                <ul class="bg-list bg-list--compact">
+                    {certs.map((c) => (
+                        <li>
+                            <span class="bg-list__title">{c.name}</span>
+                            <span class="bg-list__sub">{c.org} · {c.year}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div class="bg-col">
+                <h3 class="bg-col__title">Languages</h3>
+                <ul class="bg-list">
+                    <li>
+                        <span class="bg-list__title">Spanish</span>
+                        <span class="bg-list__sub">Native</span>
+                    </li>
+                    <li>
+                        <span class="bg-list__title">English</span>
+                        <span class="bg-list__sub">B2</span>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul class="rows rows--compact">
-            {certs.map((c) => (
-                <li class="row">
-                    <div class="row__body">
-                        <h3 class="row__title--sm">{c.name}</h3>
-                        <p>{c.org}</p>
-                    </div>
-                    <div class="row__meta">{c.year}</div>
-                </li>
-            ))}
-        </ul>
-    </section>
-
-    <section class="section" id="languages">
-        <div class="section__label">
-            <h2>Languages</h2>
-        </div>
-        <dl class="def">
-            <dt>Spanish</dt><dd>Native</dd>
-            <dt>English</dt><dd>B2</dd>
-        </dl>
     </section>
 </Layout>

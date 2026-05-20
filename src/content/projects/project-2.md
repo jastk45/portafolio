@@ -1,5 +1,5 @@
 ---
-title: 'JEANS.CH Shopping Assistant — MesinaLabs'
+title: 'JEANS.CH Shopping Assistant · MesinaLabs'
 description: 'Embeddable conversational commerce assistant for a Swiss jeans retailer. Next.js 16 widget with Shadow-DOM isolation, FastAPI + LangGraph backend, multi-language detection, and load-tested at 100+ concurrent users.'
 platform: Web · Embeddable widget
 stack: Next.js 16, React 19, TypeScript, Tailwind v4, Shadcn/ui, Radix, FastAPI, LangGraph, LangChain, OpenAI, FastText, Lingua, sentence-transformers, SQLModel, Postgres, Redis, Alembic, Locust, Docker
@@ -23,8 +23,8 @@ LLM logic had to be testable independently of the UI.
 Full-stack engineer on a small team (2–5 people). On the front-end I
 owned the Next.js 16 widget, the dashboard, the embed script, and the
 API proxy layer. On the back-end I worked on FastAPI endpoints
-(chat / cache / sync / products), on the LangGraph agent — its
-graph, its tools, and its prompts — and on the data layer: SQLModel
+(chat / cache / sync / products), on the LangGraph agent, its
+graph, its tools, and its prompts, and on the data layer: SQLModel
 schemas, Alembic migrations, the FastText + Lingua language-detection
 integration, and the sentence-transformers embedding step inside the
 agent's retrieval. Infra (Docker, Redis cache + rate limiter, pytest
@@ -64,8 +64,8 @@ integrated against it.
 The widget runs inside a Shadow DOM + iframe combination so the host
 site's CSS cannot bleed into it and the widget's styles cannot leak
 out. User identity is established through browser fingerprinting
-(`@fingerprintjs/fingerprintjs`) — no login, no cookies, no session
-prompt — and the same fingerprint is used to thread conversation
+(`@fingerprintjs/fingerprintjs`), no login, no cookies, no session
+prompt, and the same fingerprint is used to thread conversation
 context across page loads.
 
 ## Data & workload

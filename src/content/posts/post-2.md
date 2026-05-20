@@ -26,7 +26,7 @@ Acute Myeloid Leukemia. Hematologists count hundreds of cells per
 slide. The work is repetitive, slow, and prone to inter-rater
 variability. The paper asks whether deep learning, trained on a mix
 of public and clinical data, can do the cell-level detection and
-classification well enough to support — not replace — that decision.
+classification well enough to support, not replace, that decision.
 
 ## My contribution
 
@@ -44,7 +44,7 @@ classification on the segmented cells, with confusion-matrix based
 evaluation. The model outputs bounding boxes with category labels,
 evaluated against IoU (Intersection over Union) and mAP (Mean Average
 Precision) at IoU ≥ 0.5. Data augmentation was applied to handle the
-class imbalance — lymphocytes dominate the Munich dataset at >3,000
+class imbalance, lymphocytes dominate the Munich dataset at >3,000
 samples, while several pathological classes have <30.
 
 ## Datasets
@@ -57,12 +57,12 @@ from 100 AML patients at Munich University Hospital (2014–2017) plus
 15 morphological classes**, after removing blurred or inconsistently
 annotated images:
 
-- Lymphocyte (typical) — 3,815
-- Myeloblast — 3,150
-- Neutrophil (segmented) — 1,593
-- Monocyte — 1,665
-- Eosinophil — 420
-- Other 10 classes — totalling ~415
+- Lymphocyte (typical), 3,815
+- Myeloblast, 3,150
+- Neutrophil (segmented), 1,593
+- Monocyte, 1,665
+- Eosinophil, 420
+- Other 10 classes, totalling ~415
 
 **Hospital 12 de Octubre custom dataset.** Collected 2020–2021 by the
 hospital's cytology laboratory across normal bone marrow, chronic
@@ -78,7 +78,7 @@ quality typical of clinical-rather-than-research data; the 2021 cohort
 - **>90% accuracy and 92% precision** on the leukemia-cell
   identification task (headline figures from the paper abstract).
 - Comparison against eight prior published methods (Table 1 of the
-  paper) on related blood-smear segmentation tasks — accuracy range
+  paper) on related blood-smear segmentation tasks, accuracy range
   92–98.9%, on datasets between 29 and 135 images. Our work
   differentiates by combining public + clinical data and by handling
   overlapping cells, which most prior methods avoid.
@@ -104,4 +104,4 @@ quality typical of clinical-rather-than-research data; the 2021 cohort
 
 Published at TICEC 2024. The detailed model architecture,
 class-specific confusion matrix, and per-class metrics are in the
-full paper — read on ORCID.
+full paper, read on ORCID.

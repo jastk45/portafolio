@@ -1,5 +1,5 @@
 ---
-title: 'SENDIA Operations Monitoring — Digevo'
+title: 'SENDIA Operations Monitoring · Digevo'
 description: 'Transactional system monitoring, alerting, automation, and remote SQL/SMPP operations for the SENDIA business unit.'
 platform: Operations · Monitoring
 stack: Grafana, Airflow, SQL, Nagios, Freshdesk, SMPP, API Monitoring

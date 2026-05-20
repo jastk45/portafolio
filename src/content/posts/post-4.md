@@ -21,7 +21,7 @@ external_url: 'https://orcid.org/0009-0009-0602-2458'
 
 Unauthorised drone activity is escalating across civilian, commercial,
 and security contexts, and most published anti-drone work optimises
-for one half of the loop only — either detection accuracy or
+for one half of the loop only, either detection accuracy or
 neutralisation effectiveness. We set out to build an integrated
 prototype that does both: real-time visual detection with YOLOv8 and
 WiFi-deauthentication neutralisation, evaluated under realistic
@@ -44,7 +44,7 @@ deauthentication. The detection and the attack run as a single loop:
 on a positive detection above the confidence threshold, the
 neutralisation phase fires.
 
-We trained and compared four YOLO families — v4, v5s, v7, v8 — for
+We trained and compared four YOLO families, v4, v5s, v7, v8, for
 100 epochs each on the same dataset, on the CEDIA supercomputer
 (NVIDIA A100 SXM, AMD EPYC 7742, 80 GB RAM) plus consumer hardware
 (Asus Ryzen 7, NVIDIA RTX 2060). Edge-deployment was validated on a
@@ -54,12 +54,12 @@ The wireless side targets WPA2 networks without Management Frame
 Protection (MFP). The Realtek RTL8814AU adapter, with packet
 injection on 2.4 GHz and 5 GHz, sends forged deauthentication frames
 that disconnect the drone from its controller. WPA3 with MFP would
-defeat this attack — adoption was around 1% as of March 2024, so
+defeat this attack, adoption was around 1% as of March 2024, so
 WPA2 remains the realistic threat surface.
 
 ## Dataset
 
-Public drone datasets (Roboflow included) proved unsuitable — too
+Public drone datasets (Roboflow included) proved unsuitable, too
 much object-type variance, not enough specific drone labels. We
 captured and **manually labelled 8,593 drone images using LabelImg**
 across a range of environments. Most images are in clear backgrounds,
@@ -108,7 +108,7 @@ but guaranteed a 100% success rate in our test set.
 | RF-only detection (no vision) | Misses drones operating on uncommon RF profiles. |
 | Lasers / nets / EMP for neutralisation | Higher collateral risk, harder to scope. |
 | Disassociation attacks | Slower than deauthentication, no auto-reconnect cycle. |
-| Targeting WPA3 with MFP | Hardened against this attack class — out of scope. |
+| Targeting WPA3 with MFP | Hardened against this attack class, out of scope. |
 
 ## Risks & limits
 

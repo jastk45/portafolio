@@ -1,5 +1,5 @@
 ---
-title: 'Enterprise Logistics Platform — Logiztik Alliance Group'
+title: 'Enterprise Logistics Platform · Logiztik Alliance Group'
 description: 'Full-stack development on a cross-data-center logistics platform. Transactional bidirectional replication across Azure, Miami, and Tumbaco keeps three SQL Server instances in sync so operations continue from any site if one goes down.'
 platform: Web · Mobile · Enterprise
 stack: C#, .NET 8, ASP.NET Core, EF Core, Kafka, React 18, Next.js 14, TypeScript, React Native, SQL Server, Docker, Serilog, Elasticsearch, Azure DevOps
@@ -7,8 +7,8 @@ stack: C#, .NET 8, ASP.NET Core, EF Core, Kafka, React 18, Next.js 14, TypeScrip
 
 ## Problem & context
 
-Logistics operations across three sites — **Azure cloud**, **Miami**,
-and **Tumbaco** — needed to keep running even when any one site went
+Logistics operations across three sites, **Azure cloud**, **Miami**,
+and **Tumbaco**, needed to keep running even when any one site went
 down. The constraint was hard: a warehouse in Tumbaco cannot stop
 receiving cargo because a link to Miami flapped. That ruled out the
 simple solution of having one primary site and two read replicas.
@@ -26,8 +26,8 @@ designing the API contract in C# / .NET 8, implementing the EF Core
 data layer and stored-procedure tuning on SQL Server, building the
 React 18 / Next.js 14 / TypeScript front-end, and shipping
 corresponding screens to the React Native warehouse companion app.
-I did not architect the replication topology — that is the platform
-team's domain — but I built features on top of it, which meant I had
+I did not architect the replication topology, that is the platform
+team's domain, but I built features on top of it, which meant I had
 to reason about idempotency, conflict resolution, and what happens
 when a request's write is acknowledged locally before it propagates.
 
@@ -102,8 +102,8 @@ portable:
 - The pattern of *database replication + Kafka events + app-level
   conflict resolution* is reproducible in any stack where the business
   rules cannot be expressed as generic last-write-wins.
-- The EF Core + stored-procedure split — using EF for CRUD and stored
-  procedures for hot paths — is a recipe I would carry to any future
+- The EF Core + stored-procedure split, using EF for CRUD and stored
+  procedures for hot paths, is a recipe I would carry to any future
   .NET 8 project at similar scale.
 - The Serilog → Elasticsearch pipeline is essentially configuration; the
   value is the discipline of structured logging at every boundary.
@@ -117,7 +117,7 @@ The honest trade-offs in a multi-site multi-write system:
   rather than hide it.
 - **Conflict resolution lives in business logic.** Generic resolution
   policies (last-write-wins, vector clocks) are necessary but not
-  sufficient — cargo allocation rules are not generic.
+  sufficient, cargo allocation rules are not generic.
 - **Operational burden scales with sites.** Three sites is not three
   times the work of one; it is closer to the square. Observability
   is not optional, it is the only way the system is debuggable.
@@ -137,5 +137,5 @@ If I were starting again on the same problem:
 - Invest in synthetic cross-site transaction probes earlier. By the
   time you need them in an incident, it is too late to build them.
 - Front the React 18 and Next.js 14 codebases with a shared component
-  library sooner — both apps drifted in subtle UX details that took
+  library sooner, both apps drifted in subtle UX details that took
   effort to reconcile.
