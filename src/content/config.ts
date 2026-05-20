@@ -25,7 +25,10 @@ const postsCollection = defineCollection({
     schema: z.object({
         title: z.string(),
         author: z.string(),
+        authors: z.array(z.string()).optional(),
+        authorPosition: z.string().optional(),
         date: z.string(),
+        order: z.number().optional(),
         image: imageField,
         external_url: z.string().url().optional(),
         venue: z.string().optional(),

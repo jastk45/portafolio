@@ -11,7 +11,7 @@ const linkedin = "https://www.linkedin.com/in/jastk45/";
 const mail     = "mailto:jastk45@gmail.com";
 
 const allPosts = (await getCollection("posts")).sort(
-    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+    (a, b) => (a.data.order ?? 999) - (b.data.order ?? 999)
 );
 
 const experience = [
@@ -95,22 +95,23 @@ const certs = [
     <section class="section" id="featured">
         <div class="section__label">
             <h2>Featured figure</h2>
-            <span>Astudillo, TICEC 2024</span>
+            <span>Astudillo et al., Springer 2023</span>
         </div>
         <figure class="figure">
             <img
-                src="/tabla.png"
-                alt="Membrane potential V(t) over time. Three estimators — reference solution, GP+HMC, and PINNs — compared against noisy observations. The GP+HMC trace tracks the reference solution more closely than PINNs."
+                src="/dronee.png"
+                alt="TX/RX/jammer geometry: a remote controller (TX₁) and a jammer (TX₂) act on the drone receiver (RX), with the two range vectors r_{TX₁,RX} and r_{TX₂,RX} that define the deauthentication condition."
                 width="600"
-                height="463"
+                height="340"
                 loading="eager"
             />
             <figcaption>
-                Membrane potential <var>V(t)</var>: reference solution, GP+HMC
-                estimate, PINNs estimate, and noisy observations. From
-                <em>Gaussian Processes and Hamiltonian Monte Carlo for Dual
-                State-Parameter Estimation in ODE-Defined Models</em>
-                (Astudillo, TICEC 2024).
+                Transmitter / receiver / jammer geometry for the deauthentication
+                attack. From <em>Drone Detection and Anti-Drone System Using
+                YOLO: An Effective Approach to Airspace Security</em>
+                (Astudillo, Chachalo, Iza, Zhinin-Vera; Springer 2023).
+                First author. YOLOv8 detection at 95% accuracy; full
+                neutralisation averaging 2.3 s.
                 <a href={orcid} target="_blank" rel="noopener noreferrer">Read on ORCID →</a>
             </figcaption>
         </figure>
