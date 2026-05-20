@@ -4,7 +4,9 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-    <article class="paper">
+    <article class="paper prose">
+        <a class="prose__back" href="/#research">← Back to research</a>
+
         <h1>{frontmatter.title}</h1>
 
         <ul class="badge__list">

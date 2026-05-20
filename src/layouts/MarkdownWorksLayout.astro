@@ -3,32 +3,39 @@ import BaseLayout from './Layout.astro';
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-    <h1>{frontmatter.title}</h1>
-    <slot />
-    <ul class="badge__list">
-        <li><span class="badge badge--item">PLATFORM</span>{frontmatter.platform}</li>
-        <li><span class="badge badge--item">STACK</span>{frontmatter.stack}</li>
-        {frontmatter.website && (
-            <li>
-                <span class="badge badge--item">WEBSITE</span>
-                <a class="badge__link" href={frontmatter.website} target="_blank" rel="noopener noreferrer">{frontmatter.website}</a>
-            </li>
-        )}
-        {frontmatter.github && (
-            <li>
-                <span class="badge badge--item">GITHUB</span>
-                <a class="badge__link" href={frontmatter.github} target="_blank" rel="noopener noreferrer">{frontmatter.github}</a>
-            </li>
-        )}
-    </ul>
-    {(frontmatter.worksImage1 || frontmatter.worksImage2) && (
-        <div class="center">
-            {frontmatter.worksImage1 && (
-                <img class="pro-img" width="500" height="281" src={frontmatter.worksImage1.url} alt={frontmatter.worksImage1.alt} />
+    <article class="prose">
+        <a class="prose__back" href="/#work">← Back to work</a>
+
+        <h1>{frontmatter.title}</h1>
+
+        <ul class="badge__list">
+            <li><span class="badge badge--item">PLATFORM</span>{frontmatter.platform}</li>
+            <li><span class="badge badge--item">STACK</span>{frontmatter.stack}</li>
+            {frontmatter.website && (
+                <li>
+                    <span class="badge badge--item">WEBSITE</span>
+                    <a class="badge__link" href={frontmatter.website} target="_blank" rel="noopener noreferrer">{frontmatter.website}</a>
+                </li>
             )}
-            {frontmatter.worksImage2 && (
-                <img class="pro-img" width="500" height="281" src={frontmatter.worksImage2.url} alt={frontmatter.worksImage2.alt} />
+            {frontmatter.github && (
+                <li>
+                    <span class="badge badge--item">GITHUB</span>
+                    <a class="badge__link" href={frontmatter.github} target="_blank" rel="noopener noreferrer">{frontmatter.github}</a>
+                </li>
             )}
-        </div>
-    )}
+        </ul>
+
+        <slot />
+
+        {(frontmatter.worksImage1 || frontmatter.worksImage2) && (
+            <div class="center">
+                {frontmatter.worksImage1 && (
+                    <img class="pro-img" width="500" height="281" src={frontmatter.worksImage1.url} alt={frontmatter.worksImage1.alt} />
+                )}
+                {frontmatter.worksImage2 && (
+                    <img class="pro-img" width="500" height="281" src={frontmatter.worksImage2.url} alt={frontmatter.worksImage2.alt} />
+                )}
+            </div>
+        )}
+    </article>
 </BaseLayout>

@@ -9,6 +9,7 @@ const scholar  = "https://scholar.google.com.ec/citations?user=3VGlQTgAAAAJ";
 const github   = "https://github.com/Jastk45";
 const linkedin = "https://www.linkedin.com/in/jastk45/";
 const mail     = "mailto:jastk45@gmail.com";
+const phone    = "tel:+593969081119";
 
 const allPosts = (await getCollection("posts")).sort(
     (a, b) => (a.data.order ?? 999) - (b.data.order ?? 999)
@@ -88,6 +89,7 @@ const certs = [
         </ul>
         <div class="hero__contact" id="contact">
             <a href={mail}>mail</a>
+            <a href={phone}>phone</a>
             <a href={github}   target="_blank" rel="noopener noreferrer">github</a>
             <a href={orcid}    target="_blank" rel="noopener noreferrer">orcid</a>
             <a href={scholar}  target="_blank" rel="noopener noreferrer">scholar</a>
