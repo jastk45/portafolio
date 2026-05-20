@@ -383,11 +383,6 @@ html.dark {
     .site-header--hidden {
         transform: translateY(-100%);
     }
-    .site-header__num {
-        color: var(--accent);
-        font-weight: 500;
-        margin-right: 0.4em;
-    }
     .site-header__wordmark {
         color: var(--text);
         font-weight: 500;
@@ -522,24 +517,37 @@ html.dark {
         padding-block: var(--space-12);
     }
     .section__label {
-        margin-bottom: var(--space-6);
+        margin-bottom: var(--space-8);
         display: flex;
-        align-items: baseline;
+        align-items: center;
         gap: var(--space-4);
         flex-wrap: wrap;
     }
     .section__label h2 {
         font-family: var(--font-sans);
-        font-size: var(--step--1);
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--text-low);
+        font-size: clamp(1.5rem, 2.8vw, 1.875rem);
+        font-weight: 600;
+        line-height: 1.1;
+        letter-spacing: -0.015em;
+        color: var(--text);
+        text-transform: none;
+        white-space: nowrap;
+    }
+    /* Horizontal rule extending from the heading to the section's right edge */
+    .section__label::after {
+        content: "";
+        flex: 1 1 auto;
+        height: 1px;
+        background: var(--rule);
+        min-width: 60px;
+        order: 2;
     }
     .section__label > span {
         font-family: var(--font-sans);
         font-size: var(--step--1);
         color: var(--text-low);
+        order: 3;
+        flex-basis: 100%;
     }
     .section__label a { color: var(--text); }
     .section__label a:hover {
@@ -1483,23 +1491,18 @@ html.dark {
         align-items: flex-start;
     }
 
-    .section {
-        display: grid;
-        grid-template-columns: 9rem 1fr;
-        gap: var(--space-8);
-        align-items: start;
-    }
+    /* Section label sits on top of section body, full width, with a horizontal
+       rule extending right from the heading. Replaces the previous Tufte
+       sticky sidenote layout. */
     .section__label {
-        position: sticky;
-        top: var(--space-8);
-        margin-bottom: 0;
-        display: block;
+        margin-bottom: var(--space-10);
     }
     .section__label h2 {
-        margin-bottom: var(--space-2);
+        font-size: clamp(1.625rem, 3vw, 2.125rem);
     }
     .section__label > span {
         display: block;
+        margin-top: var(--space-2);
     }
 
     /* Bento at desktop: lead card spans full row, then 3 smalls in a row */
