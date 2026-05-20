@@ -13,7 +13,7 @@ order: 3
 venue: 'TICEC 2024'
 summary: "Deep-learning pipeline for cell detection and classification in Bone Marrow Aspirate Smear (BMAS) images, combining the Munich AML Morphology Dataset (11,058 cells, 15 morphological classes) with a custom 777-cell dataset collected at Hospital 12 de Octubre in Madrid. Reached 90%+ accuracy and 92% precision on leukemia-cell identification. Fourth author of five."
 image:
-    url: '/celu.png'
+    src: '../../assets/papers/celu.png'
     alt: 'Model output: detection and classification of leukemia cells in bone marrow smear images, with bounding boxes and confidence scores.'
 external_url: 'https://orcid.org/0009-0009-0602-2458'
 ---

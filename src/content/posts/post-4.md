@@ -12,7 +12,7 @@ order: 1
 venue: 'Springer 2023'
 summary: "End-to-end drone detection and neutralisation: YOLOv8s reached 94% mAP@0.5 and 98% recall on a custom 8,593-image dataset; WiFi deauthentication via MDK4 + Realtek RTL8814AU disconnected DEERC D20 targets in 2.78–4.46 s at 2–10 m. First author."
 image:
-    url: '/dronee.png'
+    src: '../../assets/papers/dronee.png'
     alt: 'TX/RX/jammer geometry: remote controller (TX₁) and jammer (TX₂) acting on the drone receiver (RX), with the two range vectors r_{TX₁,RX} and r_{TX₂,RX} that define the deauthentication condition.'
 external_url: 'https://orcid.org/0009-0009-0602-2458'
 ---

@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from 'astro:assets';
 import Layout from "../layouts/Layout.astro";
 
 const pageTitle = "Jaime Astudillo · Forward-Deployed AI Engineer · LLM systems + Computer Vision · Published Researcher";
@@ -120,12 +121,14 @@ const certs = [
                     >
                         {featured.data.image && (
                             <div class="bento__thumb">
-                                <img
-                                    src={featured.data.image.url}
+                                <Image
+                                    src={featured.data.image.src}
                                     alt={featured.data.image.alt}
                                     loading="eager"
-                                    width="600"
-                                    height="340"
+                                    format="webp"
+                                    quality={82}
+                                    widths={[400, 800, 1200]}
+                                    sizes="(min-width: 800px) 600px, 100vw"
                                 />
                             </div>
                         )}

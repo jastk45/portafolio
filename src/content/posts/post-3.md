@@ -12,7 +12,7 @@ order: 2
 venue: 'TICEC 2024'
 summary: "Probabilistic ODE solver combining Gaussian Processes with Hamiltonian Monte Carlo (PyMC3) for joint state-parameter inference. Benchmarked against PINNs on Lotka-Volterra, FitzHugh-Nagumo, and a real COVID-19 SIR model from Japan. GP+HMC beat PINNs on RMSE/MAE across every experiment, ran 4–10× faster, and added uncertainty quantification PINNs do not provide. Second author."
 image:
-    url: '/tabla.png'
+    src: '../../assets/papers/tabla.png'
     alt: 'Membrane potential V(t) over time: reference solution, GP+HMC estimate, PINNs estimate, and noisy observations.'
 external_url: 'https://orcid.org/0009-0009-0602-2458'
 ---

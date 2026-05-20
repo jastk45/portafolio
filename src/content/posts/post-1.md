@@ -13,7 +13,7 @@ order: 4
 venue: 'TICEC 2024'
 summary: "Reinforcement-learning agent with continual learning that reaches advanced Tic-Tac-Toe play on a physical robot, using an energy-barrier mechanism to prevent catastrophic forgetting. Implemented in C++/OpenCV with a webcam-based perception loop. 92% task-completion accuracy, 15% improvement in task retention vs traditional methods. Fifth author of five."
 image:
-    url: '/neu.png'
+    src: '../../assets/papers/neu.png'
     alt: 'Robotic Tic-Tac-Toe setup used to evaluate the continual-learning RL agent.'
 external_url: 'https://orcid.org/0009-0009-0602-2458'
 ---
