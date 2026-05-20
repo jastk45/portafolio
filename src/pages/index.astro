@@ -5,12 +5,14 @@ import Layout from "../layouts/Layout.astro";
 import jaimePhoto from "../assets/jaime.png";
 
 const skills = [
-    "C# / .NET 8",
-    "Python",
-    "TypeScript",
     "React + Next.js",
-    "OpenAI + LangGraph",
-    "PyTorch",
+    "TypeScript",
+    "C# / .NET 8",
+    "Python + FastAPI",
+    "TensorFlow + PyTorch",
+    "PostgreSQL + SQL Server",
+    "Docker",
+    "Azure DevOps",
 ];
 
 const pageTitle = "Jaime Astudillo · Forward-Deployed AI Engineer · LLM systems + Computer Vision · Published Researcher";
@@ -125,14 +127,6 @@ const certs = [
             <li><strong>1×</strong> first author (Springer 2023)</li>
             <li><strong>.NET 8</strong> · Python · React · LLMs</li>
         </ul>
-        <div class="hero__contact" id="contact">
-            <a href={mail}>mail</a>
-            <a href={phone}>phone</a>
-            <a href={github}   target="_blank" rel="noopener noreferrer">github</a>
-            <a href={orcid}    target="_blank" rel="noopener noreferrer">orcid</a>
-            <a href={scholar}  target="_blank" rel="noopener noreferrer">scholar</a>
-            <a href={linkedin} target="_blank" rel="noopener noreferrer">linkedin</a>
-        </div>
     </section>
 
     <section class="section" id="about">
@@ -142,27 +136,28 @@ const certs = [
         <div class="about">
             <div class="about__body">
                 <p>
-                    I'm an IT Engineer from Ecuador focused on bringing
-                    research-grade machine learning into production systems.
-                    My background is split between published research (four
-                    peer-reviewed papers across reinforcement learning,
-                    Bayesian inference, computer vision, and YOLO-based
-                    drone detection) and shipping enterprise software.
+                    Hey, I'm Jaime. I'm a Software Engineer focused on
+                    <strong> AI/ML and full-stack development</strong>,
+                    building software for logistics, agriculture, healthcare,
+                    and telecom.
                 </p>
                 <p>
-                    Today I'm at <strong>Logiztik Alliance Group</strong>
-                    on cross-data-center transactional replication with
-                    .NET 8 and Kafka, and I build LLM-integrated products
-                    on OpenAI and AWS Bedrock as a freelance Full-Stack
-                    AI Engineer.
+                    I work across enterprise web platforms, AI-powered
+                    products, REST APIs, and data systems. Recently I've
+                    been shipping cross-data-center replication at
+                    <strong> Logiztik Alliance Group</strong> on .NET 8 +
+                    Kafka, and LLM-integrated commerce assistants on
+                    Next.js + FastAPI + LangGraph.
                 </p>
                 <p>
-                    I care about the parts that make a system actually
-                    work in production: latency, observability, honest
-                    evaluation, reproducibility, and a clear story for
-                    why each trade-off was made.
+                    A few things I'm proud of:
                 </p>
-                <p>Here are a few technologies I've been working with recently:</p>
+                <ul class="about__highlights">
+                    <li>Reduced API response times by 40% through backend and database tuning.</li>
+                    <li>Shipped AI-powered recommendation systems and analytical dashboards used by real operators.</li>
+                    <li>Co-authored four peer-reviewed papers in deep learning, reinforcement learning, and computer vision (1× first author, Springer 2023).</li>
+                </ul>
+                <p>Some of the technologies I've been working with recently:</p>
                 <ul class="about__skills">
                     {skills.map((s) => <li>{s}</li>)}
                 </ul>
@@ -331,6 +326,32 @@ const certs = [
                     </li>
                 </ul>
             </div>
+        </div>
+    </section>
+
+    <section class="section section--contact" id="contact">
+        <div class="contact">
+            <p class="contact__overline">Drop me a line</p>
+            <h2 class="contact__heading">Let's talk</h2>
+            <p class="contact__lede">
+                I'm open to remote and hybrid roles, freelance projects,
+                and research collaborations. Whether you have a question,
+                a project idea, or just want to say hi, my inbox is open
+                and I try to reply within a few days.
+            </p>
+            <div class="contact__methods">
+                <a class="contact__primary" href={mail}>jastk45@gmail.com</a>
+                <ul class="contact__list">
+                    <li><a href={phone}>+593 969 081 119</a></li>
+                    <li><a href={github}   target="_blank" rel="noopener noreferrer">github.com/Jastk45</a></li>
+                    <li><a href={linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/jastk45</a></li>
+                    <li><a href={orcid}    target="_blank" rel="noopener noreferrer">ORCID 0009-0009-0602-2458</a></li>
+                    <li><a href={scholar}  target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+                </ul>
+            </div>
+            <p class="contact__footer">
+                Based in Quito, Ecuador <span aria-hidden="true">·</span> EST timezone (no DST drift)
+            </p>
         </div>
     </section>
 </Layout>

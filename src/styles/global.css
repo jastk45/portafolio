@@ -458,24 +458,6 @@ html.dark {
         color: var(--accent);
         text-decoration-color: var(--accent);
     }
-    /* Briefly accent the contact strip when navigated via #contact anchor */
-    .hero__contact:target {
-        animation: contact-pulse 1400ms var(--ease-out-quart) 100ms 1;
-    }
-    @keyframes contact-pulse {
-        0%   { background: transparent; }
-        20%  { background: oklch(0.96 0.04 30 / 0.45); }
-        100% { background: transparent; }
-    }
-    html.dark .hero__contact:target {
-        animation-name: contact-pulse-dark;
-    }
-    @keyframes contact-pulse-dark {
-        0%   { background: transparent; }
-        20%  { background: oklch(0.40 0.10 30 / 0.35); }
-        100% { background: transparent; }
-    }
-
     /* ---- Hero stats (above-the-fold signal strip) ---- */
     .hero__stats {
         margin-top: var(--space-6);
@@ -758,20 +740,28 @@ html.dark {
         grid-template-columns: 1fr;
     }
     .featured__image {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         overflow: hidden;
         border: 1px solid var(--rule);
         position: relative;
-        background: var(--surface);
+        background: var(--bg);
+        aspect-ratio: 16 / 10;
+        padding: var(--space-4);
     }
     .featured__image img {
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: contain;
         mix-blend-mode: multiply;
         transition: transform 320ms var(--ease-out-quart),
                     filter 320ms var(--ease-out-quart);
         filter: grayscale(0.2);
+    }
+    html.dark .featured__image {
+        background: var(--surface);
     }
     html.dark .featured__image img {
         mix-blend-mode: normal;
@@ -817,6 +807,9 @@ html.dark {
         background: var(--surface);
         border: 1px solid var(--rule);
         color: var(--text-mid);
+        min-height: 8rem;
+        display: flex;
+        align-items: center;
     }
     .featured__description p {
         margin: 0;
@@ -861,6 +854,27 @@ html.dark {
     .about__body strong {
         color: var(--text);
         font-weight: 600;
+    }
+    .about__highlights {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        margin: var(--space-2) 0 var(--space-4);
+        max-width: 60ch;
+    }
+    .about__highlights li {
+        position: relative;
+        padding-left: var(--space-5);
+        color: var(--text-mid);
+        line-height: 1.55;
+    }
+    .about__highlights li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        top: 0.15em;
+        font-size: 0.85em;
     }
     .about__skills {
         display: grid;
@@ -1030,6 +1044,115 @@ html.dark {
         color: var(--accent);
         font-size: 0.85em;
         top: 0.15em;
+    }
+
+    /* ---- Contact section (final) ---- */
+    .section--contact {
+        padding-block: var(--space-20) var(--space-16);
+    }
+    .contact {
+        max-width: 60ch;
+        margin-inline: auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+    }
+    .contact__overline {
+        font-family: var(--font-sans);
+        font-size: var(--step--1);
+        color: var(--accent);
+        letter-spacing: 0.04em;
+        margin: 0;
+    }
+    .contact__heading {
+        font-family: var(--font-sans);
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 600;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        color: var(--text);
+        margin: 0;
+    }
+    .contact__lede {
+        color: var(--text-mid);
+        font-size: var(--step-1);
+        line-height: 1.55;
+        margin: var(--space-2) 0 var(--space-4);
+        max-width: 50ch;
+    }
+    .contact__methods {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-5);
+        margin-top: var(--space-4);
+    }
+    .contact__primary {
+        font-family: var(--font-sans);
+        font-size: clamp(1.125rem, 2vw, 1.375rem);
+        font-weight: 600;
+        color: var(--text);
+        padding: var(--space-3) var(--space-6);
+        border: 1px solid var(--text);
+        text-decoration: none;
+        letter-spacing: -0.005em;
+        transition: color var(--duration-quick) var(--ease-out-quart),
+                    background var(--duration-quick) var(--ease-out-quart),
+                    transform var(--duration-quick) var(--ease-out-quart);
+    }
+    .contact__primary:hover {
+        color: var(--bg);
+        background: var(--accent);
+        border-color: var(--accent);
+    }
+    .contact__primary:active {
+        transform: scale(0.985);
+        transition-duration: 100ms;
+    }
+    .contact__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-2) var(--space-5);
+        font-family: var(--font-sans);
+        font-size: var(--step--1);
+    }
+    .contact__list a {
+        color: var(--text-mid);
+        text-decoration: none;
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 1px;
+        transition: color var(--duration-quick) var(--ease-out-quart),
+                    border-color var(--duration-quick) var(--ease-out-quart);
+    }
+    .contact__list a:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+    }
+    .contact__footer {
+        font-family: var(--font-sans);
+        font-size: var(--step--1);
+        color: var(--text-low);
+        letter-spacing: 0.02em;
+        margin: var(--space-6) 0 0;
+    }
+    .section--contact:target .contact__primary {
+        animation: contact-pulse-button 1400ms var(--ease-out-quart) 100ms 1;
+    }
+    @keyframes contact-pulse-button {
+        0%   { background: transparent; }
+        20%  { background: oklch(0.96 0.04 30 / 0.45); }
+        100% { background: transparent; }
+    }
+    html.dark .section--contact:target .contact__primary {
+        animation-name: contact-pulse-button-dark;
+    }
+    @keyframes contact-pulse-button-dark {
+        0%   { background: transparent; }
+        20%  { background: oklch(0.40 0.10 30 / 0.35); }
+        100% { background: transparent; }
     }
 
     /* ---- Prose wrapper (project + paper detail bodies) ---- */
