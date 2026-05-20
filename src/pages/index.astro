@@ -135,75 +135,6 @@ const certs = [
         </div>
     </section>
 
-    <section class="section" id="research">
-        <div class="section__label">
-            <h2>Selected research</h2>
-            <span>
-                {allPosts.length} papers · full list on
-                <a href={orcid} target="_blank" rel="noopener noreferrer">ORCID</a>
-                · <a href={scholar} target="_blank" rel="noopener noreferrer">Scholar</a>
-            </span>
-        </div>
-        <div class="featured-list">
-            {allPosts.map((p, i) => {
-                const href = p.data.external_url ?? `/posts/${p.slug}/`;
-                const external = !!p.data.external_url;
-                const reversed = i % 2 === 1;
-                return (
-                    <article class:list={["featured", { "featured--reversed": reversed }]}>
-                        {p.data.image && (
-                            <a
-                                class="featured__image"
-                                href={href}
-                                target={external ? "_blank" : undefined}
-                                rel={external ? "noopener noreferrer" : undefined}
-                                aria-label={p.data.title}
-                            >
-                                <Image
-                                    src={p.data.image.src}
-                                    alt={p.data.image.alt}
-                                    loading={i === 0 ? "eager" : "lazy"}
-                                    format="webp"
-                                    quality={82}
-                                    widths={[400, 800, 1200]}
-                                    sizes="(min-width: 800px) 55vw, 100vw"
-                                />
-                            </a>
-                        )}
-                        <div class="featured__content">
-                            <p class="featured__overline">Featured paper · {p.data.authorPosition ?? p.data.venue}</p>
-                            <h3 class="featured__title">
-                                <a
-                                    href={href}
-                                    target={external ? "_blank" : undefined}
-                                    rel={external ? "noopener noreferrer" : undefined}
-                                >{p.data.title}</a>
-                            </h3>
-                            {p.data.summary && (
-                                <div class="featured__description">
-                                    <p>{p.data.summary}</p>
-                                </div>
-                            )}
-                            {p.data.venue && (
-                                <p class="featured__venue">
-                                    <span>{p.data.venue}</span>
-                                </p>
-                            )}
-                            <p class="featured__links">
-                                <a
-                                    href={href}
-                                    target={external ? "_blank" : undefined}
-                                    rel={external ? "noopener noreferrer" : undefined}
-                                    aria-label={`Read ${p.data.title}`}
-                                >Read paper →</a>
-                            </p>
-                        </div>
-                    </article>
-                );
-            })}
-        </div>
-    </section>
-
     <section class="section" id="about">
         <div class="section__label">
             <h2>About</h2>
@@ -287,6 +218,75 @@ const certs = [
                     </ul>
                 </div>
             ))}
+        </div>
+    </section>
+
+    <section class="section" id="research">
+        <div class="section__label">
+            <h2>Selected research</h2>
+            <span>
+                {allPosts.length} papers · full list on
+                <a href={orcid} target="_blank" rel="noopener noreferrer">ORCID</a>
+                · <a href={scholar} target="_blank" rel="noopener noreferrer">Scholar</a>
+            </span>
+        </div>
+        <div class="featured-list">
+            {allPosts.map((p, i) => {
+                const href = p.data.external_url ?? `/posts/${p.slug}/`;
+                const external = !!p.data.external_url;
+                const reversed = i % 2 === 1;
+                return (
+                    <article class:list={["featured", { "featured--reversed": reversed }]}>
+                        {p.data.image && (
+                            <a
+                                class="featured__image"
+                                href={href}
+                                target={external ? "_blank" : undefined}
+                                rel={external ? "noopener noreferrer" : undefined}
+                                aria-label={p.data.title}
+                            >
+                                <Image
+                                    src={p.data.image.src}
+                                    alt={p.data.image.alt}
+                                    loading="lazy"
+                                    format="webp"
+                                    quality={82}
+                                    widths={[400, 800, 1200]}
+                                    sizes="(min-width: 800px) 55vw, 100vw"
+                                />
+                            </a>
+                        )}
+                        <div class="featured__content">
+                            <p class="featured__overline">Featured paper · {p.data.authorPosition ?? p.data.venue}</p>
+                            <h3 class="featured__title">
+                                <a
+                                    href={href}
+                                    target={external ? "_blank" : undefined}
+                                    rel={external ? "noopener noreferrer" : undefined}
+                                >{p.data.title}</a>
+                            </h3>
+                            {p.data.summary && (
+                                <div class="featured__description">
+                                    <p>{p.data.summary}</p>
+                                </div>
+                            )}
+                            {p.data.venue && (
+                                <p class="featured__venue">
+                                    <span>{p.data.venue}</span>
+                                </p>
+                            )}
+                            <p class="featured__links">
+                                <a
+                                    href={href}
+                                    target={external ? "_blank" : undefined}
+                                    rel={external ? "noopener noreferrer" : undefined}
+                                    aria-label={`Read ${p.data.title}`}
+                                >Read paper →</a>
+                            </p>
+                        </div>
+                    </article>
+                );
+            })}
         </div>
     </section>
 

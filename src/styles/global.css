@@ -285,11 +285,11 @@ html.dark {
 /* ---------- Components ---------- */
 @layer components {
 
-    /* ---- Side rails (socials left, email right) — desktop only ---- */
+    /* ---- Side rails (socials left, email right) — wide desktop only ---- */
     .side {
         display: none;
     }
-    @media (min-width: 1180px) {
+    @media (min-width: 1280px) {
         .side {
             display: flex;
             position: fixed;
@@ -298,8 +298,8 @@ html.dark {
             color: var(--text-low);
             width: 40px;
         }
-        .side--left  { left: 40px; }
-        .side--right { right: 40px; }
+        .side--left  { left: clamp(20px, 3vw, 40px); }
+        .side--right { right: clamp(20px, 3vw, 40px); }
         .side__list,
         .side__email {
             display: flex;
@@ -1594,5 +1594,12 @@ html.dark {
         height: 0;
         transition: transform 320ms var(--ease-out-quart),
                     height    320ms var(--ease-out-quart);
+    }
+}
+
+/* When side rails are present, push hero content inward so it doesn't underlap */
+@media (min-width: 1280px) {
+    .hero {
+        padding-inline: clamp(7rem, 9vw, 10rem);
     }
 }
