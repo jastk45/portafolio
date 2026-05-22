@@ -20,23 +20,22 @@ external_url: 'https://orcid.org/0009-0009-0602-2458'
 
 ## Problem
 
-Artificial neural networks suffer from *catastrophic forgetting*:
-training on a new task overwrites what the network learned for the
-old one. Animals do not have this problem, children learn new
-skills without losing previous ones. The paper proposes a
-reinforcement-learning agent with a biologically inspired *continual
-learning* mechanism, validated on a physical robot playing 3×3×3
-Tic-Tac-Toe.
+Artificial neural networks suffer *catastrophic forgetting*: training
+on a new task overwrites prior learning. Biological learners do not;
+children acquire new skills without losing previous ones. This paper
+introduces a reinforcement-learning agent with a biologically inspired
+*continual learning* mechanism, validated on a physical robot playing
+3×3×3 Tic-Tac-Toe.
 
 ## My contribution
 
-Fifth author of five. The methodology, the energy-barrier formulation,
-the Bellman-equation extension, and the paper itself were led by the
-LoUISE Research Group (University of Castilla-La Mancha) and the MIND
-Research Group. **I contributed to the C++ / OpenCV implementation of
-the agent and to the physical robot integration**, the webcam
-perception loop, the sparse-code generation from board state, and the
-robot-arm action layer that places tokens on the board.
+Fifth author of five. The LoUISE Research Group (University of
+Castilla-La Mancha) and the MIND Research Group led the methodology,
+the energy-barrier formulation, the Bellman-equation extension, and
+the manuscript. **Delivered the C++ / OpenCV agent implementation and
+the physical robot integration**, including the webcam perception
+loop, the sparse-code generation from board state, and the robot-arm
+action layer that places tokens on the board.
 
 ## Method
 
@@ -51,10 +50,10 @@ The agent has three coupled components:
    threshold (0.7); the first to cross wins and selects the next
    square. Adviser outputs bias this race.
 
-The novel mechanism is the **energy barrier**: previously learned
-policies are stored in read-only adviser networks per learning stage,
+The core mechanism is the **energy barrier**: read-only adviser
+networks per learning stage store previously learned policies,
 preventing later training from overwriting them. The Bellman equation
-is extended to a three-term form to incorporate one-step lookahead.
+extends to a three-term form to incorporate one-step lookahead.
 
 Implemented in C++ / OpenCV on a physical robot with a webcam and a
 controlled arm.
@@ -71,18 +70,18 @@ controlled arm.
 ## Risks & limits
 
 - **Tic-Tac-Toe is a small proof of concept.** The state space is
-  manageable; whether the energy-barrier mechanism scales to richer
-  domains (Chess, Go, real-world robotics) is an open question and
-  the paper says so.
-- **Physical-world overhead.** The robot-arm + webcam loop is slow
+  manageable; scaling the energy-barrier mechanism to richer domains
+  (Chess, Go, real-world robotics) remains an open question, as the
+  paper acknowledges.
+- **Physical-world overhead.** The robot-arm + webcam loop runs slowly
   relative to a pure simulator; experimental throughput is the
   bottleneck.
 - **Two-stage curriculum.** The agent learns "token location" first,
-  then "advanced strategy" second. Curriculum design matters; the
-  paper does not exhaustively explore alternatives.
+  then "advanced strategy". Curriculum design matters; the paper does
+  not exhaustively explore alternatives.
 
 ## Reference
 
 Published at TICEC 2024. Full derivation of the energy-barrier
 mechanism, the Bellman extension, and the staged-learning protocol
-are in the paper, read on ORCID.
+appear in the paper; read on ORCID.

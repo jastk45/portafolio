@@ -20,23 +20,22 @@ external_url: 'https://orcid.org/0009-0009-0602-2458'
 ## Problem
 
 Solving non-linear ODEs that describe real physical systems, population
-dynamics, neuron firing, epidemic spread, under noisy, sparse data is
-hard with classical numerical methods. Two modern alternatives compete:
+dynamics, neuron firing, epidemic spread, under noisy, sparse data
+strains classical numerical methods. Two modern alternatives compete:
 Physics-Informed Neural Networks (PINNs) embed the governing equation
 into the training loss; Gaussian Processes with Hamiltonian Monte Carlo
 (GP+HMC) treat the same problem as Bayesian inference over the latent
 trajectory.
 
-This paper asks the obvious follow-up: on the same equations, with the
-same noise, which one is actually more accurate, which is faster, and
-what does each one give you that the other does not?
+This paper benchmarks both head-to-head: on the same equations, with
+the same noise, which delivers higher accuracy, which runs faster, and
+what does each provide that the other does not.
 
 ## My contribution
 
 Second author of four. Contributed to the methodology, the experimental
 setup, the comparative benchmarking against PINNs, and the SIR / COVID
-case study. The work was partly funded by Yachay Tech's
-REGINV-MATH23-06 project.
+case study. Partly funded by Yachay Tech's REGINV-MATH23-06 project.
 
 ## Method
 
@@ -58,8 +57,8 @@ Learning rate 3 × 10⁻³.
 kernel; HMC with `draws = 1000`, `tune = 1000`, `target_accept = 0.9`,
 `chains = 4`, `cores = 4`.
 
-Both methods estimate parameters θ and the underlying state trajectory
-simultaneously from the noisy observations.
+Both methods jointly estimate parameters θ and the underlying state
+trajectory from the noisy observations.
 
 ## Results
 
@@ -97,11 +96,11 @@ GP+HMC ~5× more accurate on both states.
 
 GP+HMC won on accuracy *and* wall-clock time in every experiment.
 
-**Uncertainty quantification.** The headline result that doesn't fit in
-a table: GP+HMC returns a posterior over the trajectory, not a point
-estimate. PINNs do not. On the COVID SIR model that is the difference
-between "S(t) is X" and "S(t) is X with this credible interval given
-the data we actually had." For real-world epidemic data this is the
+**Uncertainty quantification.** The headline result that does not fit
+in a table: GP+HMC returns a posterior over the trajectory; PINNs
+return a point estimate. On the COVID SIR model this separates
+"S(t) is X" from "S(t) is X within this credible interval given the
+available data." For real-world epidemic data, the latter is the
 honest reading.
 
 ## Baseline & alternatives considered
@@ -117,27 +116,27 @@ honest reading.
 ## Risks & limits
 
 - **Method scaling.** GP+HMC inverts a covariance matrix that grows
-  `O(n³)` with observations. PINNs scale differently. For very long
+  `O(n³)` with observations; PINNs scale differently. On very long
   time series, PINNs may close the gap or overtake.
-- **Kernel choice matters.** The squared exponential kernel is the
-  classic default; non-stationary or rougher systems would need a
-  different kernel and likely change the result.
-- **Two synthetic + one real.** The COVID SIR case is real data but
-  one geography and one window. Not a global claim.
-- **Hyperparameter fairness.** Comparing methods with different
-  hyperparameter regimes is always partial. The PINN configuration
-  follows published recipes; we did not exhaustively grid-search.
+- **Kernel choice matters.** The squared exponential kernel anchors
+  the classic default; non-stationary or rougher systems demand a
+  different kernel and likely shift the result.
+- **Two synthetic + one real.** The COVID SIR case provides real data
+  for one geography and one window. Not a global claim.
+- **Hyperparameter fairness.** Comparing methods across different
+  hyperparameter regimes remains partial. The PINN configuration
+  follows published recipes; exhaustive grid-search was not performed.
 
 ## What I would do differently
 
 - Add a third real-data case in a domain unrelated to epidemiology
   (mechanical or financial) to test that the GP+HMC advantage is not
   data-shape-specific.
-- Report effective sample size and R-hat for the HMC chains so the
-  Bayesian rigor is visible alongside the RMSE numbers.
-- Open-source the PyMC3 notebooks. A 947 KB PDF is not a substitute
-  for a reproducible repo.
-- Compare against Deep Gaussian Processes as a third method, not just
-  as a literature reference.
-- Push toward stiffer ODE families where the PINN-vs-GP+HMC trade-off
+- Report effective sample size and R-hat for the HMC chains so
+  Bayesian rigor sits alongside the RMSE numbers.
+- Open-source the PyMC3 notebooks. A 947 KB PDF cannot substitute for
+  a reproducible repo.
+- Benchmark against Deep Gaussian Processes as a third method, not
+  only as a literature reference.
+- Extend to stiffer ODE families where the PINN-vs-GP+HMC trade-off
   is more contested in the literature.

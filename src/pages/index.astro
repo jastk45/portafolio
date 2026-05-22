@@ -225,7 +225,7 @@ const certs = [
         </div>
         <div class="featured-list">
             {allPosts.map((p, i) => {
-                const href = p.data.external_url ?? `/posts/${p.slug}/`;
+                const href = p.data.external_url ?? `/posts/${p.id}/`;
                 const external = !!p.data.external_url;
                 const reversed = i % 2 === 1;
                 return (

@@ -38,27 +38,48 @@ event-streamed through Kafka for asynchronous propagation, with
 business-level conflict resolution at the application layer rather
 than relying on database-level multi-master semantics alone.
 
-```
-        web (Next.js)  ───┐
-                          │
-        mobile (RN)   ───┤
-                          ▼
-                   ┌─────────────────┐
-                   │  nearest API    │
-                   │  (.NET 8)       │
-                   └────────┬────────┘
-                            │
-       ┌────────────────────┼────────────────────┐
-       ▼                    ▼                    ▼
-  ┌─────────┐          ┌─────────┐          ┌─────────┐
-  │  Azure  │          │  Miami  │          │ Tumbaco │
-  │ SQL Srv │          │ SQL Srv │          │ SQL Srv │
-  └────┬────┘          └────┬────┘          └────┬────┘
-       │   ◄── Kafka ──►    │   ◄── Kafka ──►    │
-       └───────── Kafka ◄───┴────────────────────┘
+<div class="diagram-frame">
+<span class="diagram-wm diagram-wm--1">CLIENTS</span>
+<span class="diagram-wm diagram-wm--2">SITE-LOCAL APIS</span>
+<span class="diagram-wm diagram-wm--3">SQL SERVER · KAFKA BUS</span>
+<span class="diagram-wm diagram-wm--4">OBSERVABILITY</span>
 
-  diagnostics: Serilog → Elasticsearch (single index, all sites)
+```mermaid
+flowchart TD
+    W[Web]
+    M[Mobile]
+
+    A[Azure]
+    I[Miami]
+    T[Tumbaco]
+
+    SA[(Azure)]
+    SI[(Miami)]
+    ST[(Tumbaco)]
+
+    ES[(Serilog → Elasticsearch)]
+
+    W --> A
+    W --> I
+    W --> T
+    M --> A
+    M --> I
+    M --> T
+
+    A --> SA
+    I --> SI
+    T --> ST
+
+    SA <-->|Kafka| SI
+    SI <-->|Kafka| ST
+    SA <-->|Kafka| ST
+
+    A -.->|logs| ES
+    I -.->|logs| ES
+    T -.->|logs| ES
 ```
+
+</div>
 
 Diagnostics flow through Serilog into Elasticsearch so production
 issues across the three sites are searchable from one place.
@@ -81,7 +102,7 @@ under EF Core.
 | Single primary + read replicas | Fails the "any site keeps operating" requirement. |
 | Native SQL Server merge replication only | Conflict handling is too generic for business rules like cargo allocation. |
 | Full event-sourced rebuild | Disproportionate to the team size and timeline. |
-| Hybrid: DB replication + Kafka business events + app-level resolution | What we shipped. |
+| Hybrid: DB replication + Kafka business events + app-level resolution | Delivered. |
 
 ## Results
 

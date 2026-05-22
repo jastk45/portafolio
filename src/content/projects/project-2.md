@@ -33,33 +33,37 @@ integrated against it.
 
 ## Architecture (high level)
 
+<div class="diagram-frame">
+<span class="diagram-wm diagram-wm--1">HOST SITE</span>
+<span class="diagram-wm diagram-wm--2">WIDGET</span>
+<span class="diagram-wm diagram-wm--3">BACKEND</span>
+<span class="diagram-wm diagram-wm--4">DATA + LLM</span>
+
+```mermaid
+flowchart TD
+    E[embed.js]
+    SD[Shadow DOM + iframe]
+
+    W[Next.js widget]
+    PX[/api/chat proxy/]
+
+    F[FastAPI]
+    AG[LangGraph agent]
+
+    LD[FastText + Lingua]
+    EM[sentence-transformers]
+    DB[(Postgres)]
+    RD[(Redis)]
+
+    E --> SD --> W --> PX --> F --> AG
+
+    AG --> LD
+    AG --> EM
+    AG --> DB
+    AG --> RD
 ```
-  host site                       MesinaLabs                   backend
-  ──────────                      ──────────                   ───────
-  <script embed.js> ──┐
-                      ▼
-                  Shadow DOM
-                   + iframe ─────► Next.js 16 widget
-                                   (React 19)
-                                          │
-                                          ▼
-                                   /api/chat (proxy,
-                                   adds x-api-key) ─────► FastAPI
-                                                            │
-                                                            ▼
-                                                       LangGraph agent
-                                                       (LangChain +
-                                                        OpenAI)
-                                                            │
-                                          ┌─────────────────┼───────────┐
-                                          ▼                 ▼           ▼
-                                     FastText +         sentence-      Postgres
-                                     Lingua             transformers   (products,
-                                     (language id)     (embeddings)    sessions)
-                                                                       + Redis
-                                                                       (rate-limit
-                                                                        + cache)
-```
+
+</div>
 
 The widget runs inside a Shadow DOM + iframe combination so the host
 site's CSS cannot bleed into it and the widget's styles cannot leak
