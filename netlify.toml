@@ -1,0 +1,12 @@
+[build]
+  command = "npx playwright install --with-deps chromium && npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Astro 5 and several transitive deps (chokidar 5, marked 16, lru-cache 11)
+  # require Node 20+. Default Netlify image still ships Node 18.
+  NODE_VERSION = "20"
+  # rehype-mermaid → mermaid-isomorphic → Playwright launches Chromium at
+  # build time to rasterise each ```mermaid block to inline SVG. The build
+  # command above installs Chromium + system deps before astro build runs.
+  PLAYWRIGHT_BROWSERS_PATH = "0"
