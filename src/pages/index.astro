@@ -398,7 +398,10 @@ const certs = [
                     panel.setAttribute('hidden', '');
                 }
             });
-            moveIndicator(tabs[index]);
+            // Defer layout reads until the browser has applied the DOM mutations
+            // above. Reading getBoundingClientRect synchronously here would force
+            // a layout flush (see Lighthouse "Avoid forced reflow" diagnostic).
+            requestAnimationFrame(() => moveIndicator(tabs[index]));
             if (focus) tabs[index].focus();
         }
 
