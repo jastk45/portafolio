@@ -279,7 +279,6 @@ html.dark {
         margin-inline: auto;
         padding-inline: clamp(1.25rem, 4vw, 2rem);
     }
-    .sheet--wide { max-width: 920px; }
 }
 
 /* ---------- Components ---------- */
@@ -299,19 +298,16 @@ html.dark {
             width: 40px;
         }
         .side--left  { left: clamp(20px, 3vw, 40px); }
-        .side--right { right: clamp(20px, 3vw, 40px); }
-        .side__list,
-        .side__email {
+        .side__list {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 0;
             padding: 0;
             list-style: none;
+            gap: var(--space-3);
         }
-        .side__list { gap: var(--space-3); }
-        .side__list::after,
-        .side__email::after {
+        .side__list::after {
             content: "";
             display: block;
             width: 1px;
@@ -328,26 +324,6 @@ html.dark {
         }
         .side__list li a:hover,
         .side__list li a:focus-visible {
-            color: var(--accent);
-            transform: translateY(-3px);
-        }
-        .side--right {
-            align-items: center;
-        }
-        .side__email {
-            writing-mode: vertical-rl;
-            font-family: var(--font-sans);
-            font-size: var(--step--1);
-            letter-spacing: 0.08em;
-            color: var(--text-low);
-            text-decoration: none;
-            margin: 20px auto;
-            padding: var(--space-2);
-            transition: color var(--duration-quick) var(--ease-out-quart),
-                        transform var(--duration-quick) var(--ease-out-quart);
-        }
-        .side__email:hover,
-        .side__email:focus-visible {
             color: var(--accent);
             transform: translateY(-3px);
         }
@@ -439,25 +415,6 @@ html.dark {
         color: var(--text-mid);
         max-width: 60ch;
     }
-    .hero__contact {
-        margin-top: var(--space-8);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0 var(--space-5);
-        font-family: var(--font-sans);
-        font-size: var(--step--1);
-    }
-    .hero__contact a {
-        color: var(--text);
-        text-decoration: underline;
-        text-decoration-color: var(--rule);
-        text-decoration-thickness: 1px;
-        text-underline-offset: 0.25em;
-    }
-    .hero__contact a:hover {
-        color: var(--accent);
-        text-decoration-color: var(--accent);
-    }
     /* ---- Hero stats (above-the-fold signal strip) ---- */
     .hero__stats {
         margin-top: var(--space-6);
@@ -535,197 +492,6 @@ html.dark {
     .section__label a:hover {
         color: var(--accent);
         text-decoration-color: var(--accent);
-    }
-
-    /* ---- Rows (paper / role / cert lists) ---- */
-    .rows {
-        display: block;
-        counter-reset: row;
-    }
-    .row {
-        counter-increment: row;
-        display: grid;
-        grid-template-columns: 2.25rem 1fr auto;
-        gap: var(--space-3) var(--space-6);
-        align-items: baseline;
-        padding-block: var(--space-4);
-        border-bottom: 1px solid var(--rule);
-    }
-    .row:last-child { border-bottom: 0; }
-    .rows--compact .row { padding-block: var(--space-3); }
-
-    /* Tufte-style margin number */
-    .row::before {
-        content: counter(row, decimal-leading-zero);
-        font-size: var(--step--1);
-        color: var(--text-low);
-        font-variant-numeric: tabular-nums;
-        letter-spacing: 0.04em;
-        transition: color 160ms var(--ease-out-quart);
-    }
-    .row:has(a):hover::before { color: var(--accent); }
-
-    .row__body h3 a {
-        text-decoration: none;
-    }
-    /* Hover micro-reveal: arrow slides in from -4px */
-    .row__body h3 a::after {
-        content: "→";
-        display: inline-block;
-        opacity: 0;
-        translate: -4px 0;
-        color: var(--accent);
-        margin-left: 0.35em;
-        transition: opacity 200ms var(--ease-out-quart),
-                    translate 200ms var(--ease-out-quart);
-    }
-    .row__body h3 a:hover {
-        color: var(--accent);
-    }
-    .row__body h3 a:active {
-        transform: scale(0.985);
-        transition: transform 100ms var(--ease-out-quart);
-        display: inline-block;
-    }
-    .row:hover .row__body h3 a::after {
-        opacity: 1;
-        translate: 0 0;
-    }
-    .row__body p {
-        margin-top: var(--space-2);
-        color: var(--text-mid);
-        font-size: var(--step-0);
-        max-width: 60ch;
-    }
-    .row__meta {
-        font-family: var(--font-sans);
-        font-size: var(--step--1);
-        color: var(--text-low);
-        white-space: nowrap;
-        letter-spacing: 0.02em;
-        font-variant-numeric: tabular-nums;
-    }
-    .row__sub {
-        color: var(--text-low);
-        font-weight: 400;
-        font-size: var(--step-0);
-    }
-    .row__title--sm {
-        font-size: var(--step-0);
-        font-weight: 500;
-        letter-spacing: 0;
-    }
-
-    /* ---- Bento (Research grid: 1 lead card + 3 small cards) ---- */
-    .bento {
-        display: grid;
-        gap: var(--space-4);
-    }
-    .bento__card {
-        display: grid;
-        text-decoration: none;
-        color: inherit;
-        border: 1px solid var(--rule);
-        background: var(--surface);
-        padding: var(--space-5);
-        transition: border-color 200ms var(--ease-out-quart),
-                    background    200ms var(--ease-out-quart),
-                    transform     200ms var(--ease-out-quart);
-    }
-    .bento__card:hover {
-        border-color: var(--text);
-        background: var(--bg);
-        transform: translateY(-1px);
-    }
-    .bento__card:active {
-        transform: scale(0.985);
-        transition-duration: 100ms;
-    }
-    .bento__card--lead {
-        grid-template-columns: 1fr;
-        gap: var(--space-5);
-    }
-    .bento__thumb {
-        overflow: hidden;
-        border: 1px solid var(--rule);
-        background: var(--bg);
-    }
-    .bento__thumb img {
-        width: 100%;
-        height: auto;
-        display: block;
-        mix-blend-mode: multiply;
-        transition: transform 320ms var(--ease-out-quart);
-    }
-    html.dark .bento__thumb img { mix-blend-mode: normal; }
-    .bento__card:hover .bento__thumb img { transform: scale(1.015); }
-
-    .bento__body {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-2);
-    }
-    .bento__tag {
-        font-family: var(--font-sans);
-        font-size: var(--step--1);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--text-low);
-    }
-    .bento__card--lead .bento__tag { color: var(--accent); }
-    .bento__title {
-        font-family: var(--font-sans);
-        font-weight: 600;
-        line-height: 1.25;
-        letter-spacing: -0.005em;
-        color: var(--text);
-        font-size: var(--step-1);
-    }
-    .bento__card--lead .bento__title {
-        font-size: clamp(1.25rem, 2.2vw, 1.625rem);
-    }
-    .bento__summary {
-        margin: 0;
-        color: var(--text-mid);
-        font-size: var(--step-0);
-        line-height: 1.55;
-        max-width: 65ch;
-    }
-    .bento__meta {
-        margin-top: var(--space-2);
-        font-family: var(--font-sans);
-        font-size: var(--step--1);
-        color: var(--text-low);
-        letter-spacing: 0.02em;
-        font-variant-numeric: tabular-nums;
-    }
-    .bento__card:hover .bento__meta { color: var(--accent); }
-
-    .bento__list {
-        display: grid;
-        gap: var(--space-4);
-        grid-template-columns: 1fr;
-    }
-    .bento__card--small {
-        min-height: 9rem;
-    }
-
-    /* Stagger small cards on initial paint (Emil: 30-80ms between items) */
-    @keyframes bento-rise {
-        from { opacity: 0; transform: translateY(8px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
-    .bento__card--lead {
-        animation: bento-rise 520ms var(--ease-out-quart) 200ms both;
-    }
-    .bento__list li:nth-child(1) .bento__card--small {
-        animation: bento-rise 480ms var(--ease-out-quart) 280ms both;
-    }
-    .bento__list li:nth-child(2) .bento__card--small {
-        animation: bento-rise 480ms var(--ease-out-quart) 340ms both;
-    }
-    .bento__list li:nth-child(3) .bento__card--small {
-        animation: bento-rise 480ms var(--ease-out-quart) 400ms both;
     }
 
     /* ---- Featured papers (alternating L/R) ---- */
@@ -854,27 +620,6 @@ html.dark {
     .about__body strong {
         color: var(--text);
         font-weight: 600;
-    }
-    .about__highlights {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-2);
-        margin: var(--space-2) 0 var(--space-4);
-        max-width: 60ch;
-    }
-    .about__highlights li {
-        position: relative;
-        padding-left: var(--space-5);
-        color: var(--text-mid);
-        line-height: 1.55;
-    }
-    .about__highlights li::before {
-        content: "▸";
-        position: absolute;
-        left: 0;
-        color: var(--accent);
-        top: 0.15em;
-        font-size: 0.85em;
     }
     .about__skills {
         display: grid;
@@ -1372,24 +1117,6 @@ html.dark {
         text-decoration-color: var(--accent);
     }
 
-    /* ---- Definition list (languages) ---- */
-    .def {
-        display: grid;
-        grid-template-columns: 10rem 1fr;
-        gap: var(--space-3) var(--space-6);
-        max-width: 32rem;
-    }
-    .def dt {
-        font-family: var(--font-sans);
-        font-size: var(--step--1);
-        color: var(--text-low);
-        letter-spacing: 0.04em;
-    }
-    .def dd {
-        margin: 0;
-        color: var(--text);
-    }
-
     /* ---- Footer ---- */
     .site-footer {
         margin-top: var(--space-20);
@@ -1422,18 +1149,11 @@ html.dark {
     #themeToggle:active { transform: scale(0.94); }
     #themeToggle svg { width: 16px; height: 16px; }
 
-    /* ---- Hide legacy decorative gifs on /works /posts and markdown layouts ---- */
-    .gif-container { display: none !important; }
+    /* ---- Hide legacy decorative gif element on /404 ---- */
     div.gif        { display: none !important; }
     img.gif        { display: none !important; }
 
     /* ---- Legacy support: /works and /posts card grids ---- */
-    .link-card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-        gap: var(--space-6);
-        margin-top: var(--space-8);
-    }
     .card { padding: 0; display: block; }
     .card__link {
         display: block;
@@ -1551,28 +1271,7 @@ html.dark {
         text-decoration-color: var(--rule);
     }
 
-    /* ---- Legacy classes still referenced (footer icon links, btn) ---- */
-    .btn {
-        display: inline-flex;
-        align-items: center;
-        background: transparent;
-        color: var(--text);
-        border: 1px solid var(--text);
-        border-radius: 0;
-        font: 500 var(--step-0)/1 var(--font-sans);
-        padding: var(--space-3) var(--space-5);
-        text-decoration: none;
-        transition: background var(--duration-quick) var(--ease-out-quart),
-                    color      var(--duration-quick) var(--ease-out-quart);
-    }
-    .btn:hover {
-        background: var(--text);
-        color: var(--bg);
-    }
-
     .center { text-align: center; }
-    .skills { display: none; }    /* devicon strip — anti-ref #8, hidden */
-    .skills__img { display: none; }
 
     /* ---- Page-load orchestration ---- */
     /* ONE moment, hero + nav only. No scroll-triggered reveals
@@ -1594,7 +1293,6 @@ html.dark {
     .hero__role    { animation: rise 520ms var(--ease-out-quart) 220ms both; }
     .hero__lede    { animation: rise 520ms var(--ease-out-quart) 300ms both; }
     .hero__stats   { animation: rise 520ms var(--ease-out-quart) 360ms both; }
-    .hero__contact { animation: rise 520ms var(--ease-out-quart) 440ms both; }
 }
 
 /* ---------- Utilities ---------- */
@@ -1647,18 +1345,6 @@ html.dark {
         flex-shrink: 0;
         scroll-snap-align: start;
     }
-    .def {
-        grid-template-columns: 1fr;
-        gap: var(--space-1);
-    }
-    .def dt { margin-top: var(--space-3); }
-    .def dt:first-child { margin-top: 0; }
-    .row {
-        grid-template-columns: 1fr;
-        gap: var(--space-1);
-    }
-    .row::before { display: none; }
-    .row__meta { order: -1; }
 }
 
 /* ---- Desktop: asymmetric section layout (Tufte sidenote) ---- */
@@ -1683,25 +1369,6 @@ html.dark {
     .section__label > span {
         display: block;
         margin-top: var(--space-2);
-    }
-
-    /* Bento at desktop: lead card spans full row, then 3 smalls in a row */
-    .bento {
-        gap: var(--space-5);
-    }
-    .bento__card--lead {
-        grid-template-columns: 1.2fr 1fr;
-        gap: var(--space-6);
-        padding: var(--space-6);
-    }
-    .bento__card--lead .bento__thumb {
-        align-self: start;
-    }
-    .bento__list {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .bento__card--small {
-        padding: var(--space-5);
     }
 
     /* Background grid at desktop: 3 columns */
