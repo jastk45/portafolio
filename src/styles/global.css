@@ -1219,6 +1219,63 @@ html.dark {
     .prose pre {
         margin-block: var(--space-4);
     }
+    /* Diagram frame: wraps a mermaid <pre> plus layer-name watermarks placed
+       absolute behind the SVG. Watermarks describe each horizontal band of the
+       diagram (e.g. CLIENTS / APIs / DBS / OBSERVABILITY) without taking space
+       inside the SVG itself, so the diagram boxes can grow large. */
+    .prose .diagram-frame {
+        position: relative;
+        margin-block: var(--space-6);
+    }
+    .prose .diagram-frame > pre {
+        position: relative;
+        z-index: 1;
+        margin-block: 0;
+    }
+    .prose .diagram-wm {
+        position: absolute;
+        left: 0;
+        font-family: var(--font-sans);
+        font-size: var(--step--1);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-low);
+        opacity: 0.55;
+        z-index: 0;
+        pointer-events: none;
+        white-space: nowrap;
+    }
+    .prose .diagram-wm--1 { top: 4%; }
+    .prose .diagram-wm--2 { top: 30%; }
+    .prose .diagram-wm--3 { top: 56%; }
+    .prose .diagram-wm--4 { top: 86%; }
+    @media (max-width: 720px) {
+        .prose .diagram-wm { display: none; }
+    }
+    /* Mermaid diagrams: the <pre> wrapper is invisible (no bg, no border).
+       Mermaid paints its own boxes/text via its inline <style>. We only:
+       (a) bleed the <pre> out of the 68ch prose column, and
+       (b) scale the SVG up to fit that width — without capping it
+       at mermaid's hard-coded inline max-width. */
+    .prose pre:has(> svg[aria-roledescription]) {
+        --diagram-bleed: clamp(0px, calc((100vw - 68ch) / 2 - 1.5rem), 160px);
+        background: transparent;
+        border: 0;
+        padding: 0;
+        margin-inline: calc(var(--diagram-bleed) * -1);
+        max-width: none !important;
+        width: calc(100% + var(--diagram-bleed) * 2);
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    .prose pre > svg[aria-roledescription] {
+        display: block;
+        margin-inline: auto;
+        width: 100% !important;
+        max-width: none !important;
+        height: auto;
+    }
     .prose table {
         margin-block: var(--space-6);
     }

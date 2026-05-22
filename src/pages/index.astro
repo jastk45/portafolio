@@ -51,7 +51,7 @@ const experience = [
         company: "MesinaLabs · JEANS.CH",
         note: "Embeddable shopping assistant for a Swiss jeans retailer. Next.js 16 widget with Shadow-DOM isolation, FastAPI + LangGraph backend.",
         bullets: [
-            "Next.js 16 / React 19 widget embeddable via single <script> tag with full Shadow DOM CSS isolation.",
+            "Next.js 16 / React 19 widget embeddable via a single script tag with full Shadow DOM CSS isolation.",
             "FastAPI endpoints and LangGraph agent (graph + tools + prompts) for conversational commerce.",
             "Multi-language detection (EN, DE, FR) with FastText + Lingua; sentence-transformers for retrieval.",
             "Load-tested with Locust at 100–200 concurrent users with 80% Redis cache hit rate."
@@ -63,11 +63,12 @@ const experience = [
         period: "2024–2025",
         role: "Frontend & AI Developer",
         company: "IFG Innovaciones Agropecuarias",
-        note: "Next.js + ML for agricultural nutrition recommendations. Power BI integrations for sales insights.",
+        note: "Crop-management platform for Ecuador: FastAPI clean architecture + PostgreSQL on the backend, Next.js 15 App Router + Prisma + NextAuth on the frontend, Auth0 OIDC end-to-end.",
         bullets: [
-            "Next.js web applications with TensorFlow and Scikit-learn models served via FastAPI.",
-            "Recommendation system for agricultural crop nutrition, deployed via Docker.",
-            "Power BI integrations and Python pipelines for sales metrics and strategic dashboards."
+            "Next.js 15 + React 19 feature areas: clients, zones, soil analysis, nutritional requirements, fertilizer sources, irrigation sessions, nutrient calculator.",
+            "FastAPI clean-architecture domain layer (Routes → Interactors → Services → Repositories) with SQLModel, Alembic, and Auth0 OIDC middleware.",
+            "Recommendation pipeline producing embeddings and optimization scores for ranked, explainable nutrient plans.",
+            "shadcn/ui + Radix + Tailwind v4 + Recharts; PDF reports via react-pdf / jsPDF with html2canvas."
         ]
     },
     {
@@ -117,10 +118,10 @@ const certs = [
         </h1>
         <p class="hero__role">Forward-Deployed AI Engineer · LLM systems + Computer Vision · Remote · EST</p>
         <p class="hero__lede">
-            Published researcher shipping production systems. Currently at
-            <strong>Logiztik Alliance Group</strong> on cross-data-center
-            transactional replication with .NET 8 and Kafka. Building
-            LLM-integrated products on OpenAI and AWS Bedrock.
+            Published researcher delivering production systems. Currently
+            engineering cross-data-center transactional replication on
+            .NET 8 and Kafka. Built LLM-integrated products on OpenAI and
+            AWS Bedrock.
         </p>
         <ul class="hero__stats" aria-label="At a glance">
             <li><strong>4</strong> peer-reviewed papers</li>
@@ -136,28 +137,24 @@ const certs = [
         <div class="about">
             <div class="about__body">
                 <p>
-                    My background sits between two worlds that don't talk
-                    to each other often enough: peer-reviewed research
-                    (RL, Bayesian inference, computer vision) and
-                    production engineering at messy, real-world scale
-                    (logistics, agriculture, healthcare, telecom).
+                    Background spans two worlds that rarely intersect:
+                    peer-reviewed research (RL, Bayesian inference,
+                    computer vision) and production engineering at
+                    real-world scale (logistics, agriculture, healthcare,
+                    telecom).
                 </p>
                 <p>
-                    I care about the parts of a system most people skip
-                    over once the demo runs: latency budgets, honest
-                    evaluation, observability, the boring failure modes,
-                    the trade-offs you can defend in a code review. A
-                    benchmark that beats the baseline is interesting; a
-                    system that holds up when the network flaps at 3am
-                    is what actually ships.
+                    Focus on the parts of a system most teams skip once
+                    the demo runs: latency budgets, honest evaluation,
+                    observability, boring failure modes, trade-offs
+                    defensible in code review. A benchmark that beats
+                    the baseline is interesting; a system that holds up
+                    when the network flaps at 3am is what ships.
                 </p>
                 <p>
-                    The result is a working style that tries to bridge
-                    the gap. I'm comfortable taking a research idea from
-                    paper to a service behind an API, and equally
-                    comfortable writing the SQL that keeps it fast in
-                    production. Below are the tools I reach for most
-                    these days:
+                    Delivered research ideas from paper to production
+                    service, and tuned the SQL that keeps them fast.
+                    Tools used daily:
                 </p>
                 <ul class="about__skills">
                     {skills.map((s) => <li>{s}</li>)}
